@@ -66,15 +66,20 @@
     <Reference Include="System.EnterpriseServices" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Controllers\Filters\ExceptionFilter.cs" />
+    <Compile Include="Controllers\Filters\LoggerFilter.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
+    <Compile Include="Models\Entity\Access.cs" />
     <Compile Include="Models\Entity\Articles.cs" />
     <Compile Include="Models\Entity\Comments.cs" />
+    <Compile Include="Models\InterFaces\IAccess.cs" />
     <Compile Include="Models\InterFaces\IArticle.cs" />
     <Compile Include="Models\InterFaces\IComment.cs" />
     <Compile Include="Models\ServiceBuilder.cs" />
+    <Compile Include="Models\Services\AccessService.cs" />
     <Compile Include="Models\Services\ArticleService.cs" />
     <Compile Include="Models\Services\CommentService.cs" />
     <Compile Include="Models\Util\InputUtil.cs" />

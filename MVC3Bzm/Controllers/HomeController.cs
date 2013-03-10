@@ -10,6 +10,7 @@ using Mvc3Demo3.Models.Entity;
 using System.Data;
 using MVC3Bzm.Models.InterFaces;
 using MVC3Bzm.Models.Entity;
+using MVC3Bzm.Controllers.Filters;
 
 namespace Mvc3Demo3.Controllers
 {
@@ -19,6 +20,7 @@ namespace Mvc3Demo3.Controllers
         /// 首页
         /// </summary>
         /// <returns></returns>
+        [LoggerFilter()]
         public ActionResult Index()
         {
             //创建对象
@@ -34,6 +36,7 @@ namespace Mvc3Demo3.Controllers
         /// </summary>
         /// <param name="id"></param>
         /// <returns></returns>
+        [LoggerFilter()]
         public ActionResult Detail(string id)
         {
             //创建对象
@@ -53,6 +56,7 @@ namespace Mvc3Demo3.Controllers
         /// </summary>
         /// <param name="id"></param>
         /// <returns></returns>
+        [LoggerFilter()]
         public ActionResult NextPage(string id)
         {
             //创建对象
@@ -67,6 +71,7 @@ namespace Mvc3Demo3.Controllers
         /// 添加评论
         /// </summary>
         /// <returns></returns>
+        [LoggerFilter()]
         public ActionResult Comments(string title, string name, string content)
         {
             Comments comment = new Comments
@@ -89,7 +94,11 @@ namespace Mvc3Demo3.Controllers
             return Content(result);
         }
 
-
+        /// <summary>
+        /// 关于站长
+        /// </summary>
+        /// <returns></returns>
+        [LoggerFilter()]
         public ActionResult About()
         {
             return View();

@@ -24,10 +24,23 @@ namespace Mvc3Demo3.Models
             return new ArticleService();
         }
 
-
+        /// <summary>
+        /// 创建评论服务
+        /// </summary>
+        /// <returns></returns>
         public static IComment BuildCommentService()
         {
             return new CommentService();
+        }
+
+
+        /// <summary>
+        /// 创建访问服务
+        /// </summary>
+        /// <returns></returns>
+        public static IAccess BuildAccessService()
+        {
+            return new AccessService();
         }
 
 

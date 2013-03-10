@@ -11,7 +11,7 @@
     {
         <div class='post_list'>
             <div class='post_title'>@Html.ActionLink(art.Title, "Detail", new { id = art.ID }, new { target = "_blank" })</div>
-            <div class='post_content'>@art.Content</div>
+            <div class='post_content'>@Html.Raw(@art.Content)</div>
             <div class='post_info'>@art.Date&nbsp;&nbsp;@art.TagName&nbsp&nbsp;<a href="Home/About" target="_blank">@art.AdminName</a>&nbsp&nbsp;@art.Access</div>
         </div>
     }

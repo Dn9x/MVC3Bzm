@@ -5,7 +5,7 @@
     <!--内容-->
     <div class='post_list'>
         <div class='post_title' id="Div_Title">@art.Title</div>
-        <div class='post_content' id="Div_Content">@art.Content</div>
+        <div class='post_content' id="Div_Content">@Html.Raw(@art.Content)</div>
         <div class='post_info' id="Div_Info">@art.Date&nbsp;&nbsp;@art.TagName&nbsp&nbsp;@art.AdminName&nbsp&nbsp;@art.Access&nbsp;&nbsp;&nbsp;&nbsp;留言請按q</div>
         <input type="hidden" id="Hid_Title" value="@art.ID" />
     </div>
