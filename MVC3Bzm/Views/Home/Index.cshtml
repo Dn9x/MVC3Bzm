@@ -1,0 +1,23 @@
+﻿@model Mvc3Demo3.Models.Entity.Articles
+
+@{
+    ViewBag.Title = "做梦也很累";
+}
+
+@{
+    List<Mvc3Demo3.Models.Entity.Articles> list = ViewData["Articles"] as List<Mvc3Demo3.Models.Entity.Articles>;
+     
+    foreach (Mvc3Demo3.Models.Entity.Articles art in list)
+    {
+        <div class='post_list'>
+            <div class='post_title'>@Html.ActionLink(art.Title, "Detail", new { id = art.ID }, new { target = "_blank" })</div>
+            <div class='post_content'>@art.Content</div>
+            <div class='post_info'>@art.Date&nbsp;&nbsp;@art.TagName&nbsp&nbsp;<a href="Home/About" target="_blank">@art.AdminName</a>&nbsp&nbsp;@art.Access</div>
+        </div>
+    }
+    
+    <div id='next_page' class='post_list'>
+        <div id="next_p" class='post_title'>加载下一页...</div>
+        <input type="hidden" id="Hid_Page" value="10" />
+    </div>
+}

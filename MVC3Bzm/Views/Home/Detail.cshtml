@@ -1,0 +1,67 @@
+﻿
+@{
+    Mvc3Demo3.Models.Entity.Articles art = ViewData["Article"] as Mvc3Demo3.Models.Entity.Articles;
+}
+    <!--内容-->
+    <div class='post_list'>
+        <div class='post_title' id="Div_Title">@art.Title</div>
+        <div class='post_content' id="Div_Content">@art.Content</div>
+        <div class='post_info' id="Div_Info">@art.Date&nbsp;&nbsp;@art.TagName&nbsp&nbsp;@art.AdminName&nbsp&nbsp;@art.Access&nbsp;&nbsp;&nbsp;&nbsp;留言請按q</div>
+        <input type="hidden" id="Hid_Title" value="@art.ID" />
+    </div>
+
+    <!--評論層-->
+    <div class="post_list" id="Div_Reply" style="display:none;">
+       	<table width="580" border="0" align="center">
+        	<tr>
+        	    <td width="90" align="right" style="color:#333; font-size:16px;">名称：</td>
+        	    <td colspan="2" align="left">
+       	            <input type="text" name="Txt_Name" id="Txt_Name" style="width:320px; height:20px; line-height:20px;" />
+                </td>
+       	    </tr>
+        	    <tr>
+        	    <td align="right" style="color:#333; font-size:16px;">内容：</td>
+        	    <td colspan="2" align="left">
+                    <textarea name="Txt_Content" id="Txt_Content" style="width:400px; height:80px;"></textarea>
+                </td>
+       	    </tr>
+            <tr>
+        	    <td>&nbsp;</td>
+        	    <td align="left"><input type="button" name="Btn_Post" id="Btn_Post" value="送出" /></td>
+        	    <td align="left">&nbsp;</td>
+      	    </tr>
+      	</table>
+	</div>
+
+    <!--评论内容-->
+    @{
+        List<MVC3Bzm.Models.Entity.Comments> coms = ViewData["Comments"] as List<MVC3Bzm.Models.Entity.Comments>;
+
+        foreach (MVC3Bzm.Models.Entity.Comments com in coms)
+        { 
+            <div class='reply_list'>
+                <table width='580' height='auto' border='0' align='center'>
+                    <tr>
+                        <td style='width:72px;' rowspan='2' align='center' valign='top'>
+                        <img src='@Url.Content("~/Content/images/head.jpg")' width='50' height='50' alt='@com.User' title='@com.User' />
+                        </td>
+                        <td align='left' style='width:498px; font-size:11px; color:#555;'>
+                        @com.User&nbsp;&nbsp;@com.Date
+                        </td>
+                    </tr>
+                    <tr>
+                        <td align='left'>
+                        <div style='width:100%; font-size:12px; color:#555; height:auto; word-wrap:break-word; word-break:break-all;'>
+                        @com.Content
+                        </div>
+                        </td>
+                    </tr>
+                </table>
+            </div>
+        }    
+    }
+    
+
+@{
+    ViewBag.Title = @art.Title;
+}
