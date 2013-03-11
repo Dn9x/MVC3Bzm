@@ -75,13 +75,16 @@
     <Compile Include="Models\Entity\Access.cs" />
     <Compile Include="Models\Entity\Articles.cs" />
     <Compile Include="Models\Entity\Comments.cs" />
+    <Compile Include="Models\Entity\Errors.cs" />
     <Compile Include="Models\InterFaces\IAccess.cs" />
     <Compile Include="Models\InterFaces\IArticle.cs" />
     <Compile Include="Models\InterFaces\IComment.cs" />
+    <Compile Include="Models\InterFaces\IErrors.cs" />
     <Compile Include="Models\ServiceBuilder.cs" />
     <Compile Include="Models\Services\AccessService.cs" />
     <Compile Include="Models\Services\ArticleService.cs" />
     <Compile Include="Models\Services\CommentService.cs" />
+    <Compile Include="Models\Services\ErrorService.cs" />
     <Compile Include="Models\Util\InputUtil.cs" />
     <Compile Include="Models\Util\JsonUtil.cs" />
     <Compile Include="Models\Util\MySqlUtil.cs" />

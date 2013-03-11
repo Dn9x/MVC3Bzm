@@ -21,6 +21,7 @@ namespace Mvc3Demo3.Controllers
         /// </summary>
         /// <returns></returns>
         [LoggerFilter()]
+        [ExceptionFilter()]
         public ActionResult Index()
         {
             //创建对象
@@ -37,6 +38,7 @@ namespace Mvc3Demo3.Controllers
         /// <param name="id"></param>
         /// <returns></returns>
         [LoggerFilter()]
+        [ExceptionFilter()]
         public ActionResult Detail(string id)
         {
             //创建对象
@@ -57,6 +59,7 @@ namespace Mvc3Demo3.Controllers
         /// <param name="id"></param>
         /// <returns></returns>
         [LoggerFilter()]
+        [ExceptionFilter()]
         public ActionResult NextPage(string id)
         {
             //创建对象
@@ -72,6 +75,7 @@ namespace Mvc3Demo3.Controllers
         /// </summary>
         /// <returns></returns>
         [LoggerFilter()]
+        [ExceptionFilter()]
         public ActionResult Comments(string title, string name, string content)
         {
             Comments comment = new Comments
@@ -99,6 +103,7 @@ namespace Mvc3Demo3.Controllers
         /// </summary>
         /// <returns></returns>
         [LoggerFilter()]
+        [ExceptionFilter()]
         public ActionResult About()
         {
             return View();

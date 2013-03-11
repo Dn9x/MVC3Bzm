@@ -25,10 +25,10 @@ namespace MVC3Bzm.Controllers.Filters
 
             Access access = new Access()
             {
-                Url = filterContext.HttpContext.Request.Url.AbsoluteUri,
-                Ip = filterContext.HttpContext.Request.UserHostAddress,
-                Dns = filterContext.HttpContext.Request.UserHostName,
-                Browser = brow
+                Url = filterContext.HttpContext.Request.Url.AbsoluteUri,       //用户请求的URL
+                Ip = filterContext.HttpContext.Request.UserHostAddress,        //用户的IP
+                Dns = filterContext.HttpContext.Request.UserHostName,          //用户的DNS
+                Browser = brow      //用户的浏览器信息
             };
 
             //创建服务
@@ -44,7 +44,7 @@ namespace MVC3Bzm.Controllers.Filters
         /// <param name="filterContext"></param>
         public void OnActionExecuting(ActionExecutingContext filterContext)
         {
-            
+            throw new Exception();
         }
     }
 }

@@ -43,6 +43,15 @@ namespace Mvc3Demo3.Models
             return new AccessService();
         }
 
+        /// <summary>
+        /// 创建错误服务
+        /// </summary>
+        /// <returns></returns>
+        public static IErrors BuildErrorService()
+        {
+            return new ErrorService();
+        }
+
 
     }
 }
