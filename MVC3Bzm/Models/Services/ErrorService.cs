@@ -5,6 +5,7 @@ using System.Web;
 using MVC3Bzm.Models.InterFaces;
 using Mvc3Demo3.Models.Util;
 using MVC3Bzm.Models.Entity;
+using System.Configuration;
 
 namespace MVC3Bzm.Models.Services
 {
@@ -13,7 +14,7 @@ namespace MVC3Bzm.Models.Services
 
         public string InsertErrors(Errors error)
         {
-            string connStr = "Database=biezuomeng;Data Source=localhost;User Id=root;Password=1234;pooling=true;CharSet=utf8;port=3306";
+            string connStr = ConfigurationManager.AppSettings["DBConn"];
 
             string sql = String.Format("insert into bzm_error(error_msg, error_date) value('{0}', sysdate())", error.Error);
 

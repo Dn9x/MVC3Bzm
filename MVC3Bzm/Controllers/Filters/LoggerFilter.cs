@@ -44,7 +44,6 @@ namespace MVC3Bzm.Controllers.Filters
         /// <param name="filterContext"></param>
         public void OnActionExecuting(ActionExecutingContext filterContext)
         {
-            throw new Exception();
         }
     }
 }

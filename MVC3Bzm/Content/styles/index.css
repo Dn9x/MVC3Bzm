@@ -16,6 +16,7 @@
 	z-index:1;
 	overflow:hidden;
 	padding:0px 0px 0px 0px;
+	background:url(../Images/tile.gif);
 }
 
 .pages1
@@ -26,6 +27,16 @@
 .pages2
 {
 	background:url(../Images/tile.gif);
+}
+
+.pages3
+{
+	background:url(../Images/bmp_ele.png);
+}
+
+.pages4
+{
+	background:url(../Images/bg_main.jpg);
 }
 
 #header

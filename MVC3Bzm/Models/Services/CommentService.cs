@@ -6,6 +6,7 @@ using MVC3Bzm.Models.InterFaces;
 using MVC3Bzm.Models.Entity;
 using MySql.Data.MySqlClient;
 using Mvc3Demo3.Models.Util;
+using System.Configuration;
 
 namespace MVC3Bzm.Models.Services
 {
@@ -14,7 +15,7 @@ namespace MVC3Bzm.Models.Services
 
         public string InsertComment(Comments comment)
         {
-            string connStr = "Database=biezuomeng;Data Source=localhost;User Id=root;Password=1234;pooling=true;CharSet=utf8;port=3306";
+            string connStr = ConfigurationManager.AppSettings["DBConn"];
 
             string sql = String.Format("insert into bzm_comment(comm_user, comm_content, comm_date, comm_articleId, remark) value('{0}', '{1}', sysdate(), {2}, null)", comment.User, comment.Content, comment.ArticleId);
 
@@ -26,7 +27,7 @@ namespace MVC3Bzm.Models.Services
 
         public List<Comments> SelectCommentsByArticleId(string articleId)
         {
-            string connStr = "Database=biezuomeng;Data Source=localhost;User Id=root;Password=1234;pooling=true;CharSet=utf8;port=3306";
+            string connStr = ConfigurationManager.AppSettings["DBConn"];
 
             List<Comments> list = new List<Comments>();
 

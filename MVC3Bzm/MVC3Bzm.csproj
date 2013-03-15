@@ -92,7 +92,9 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="Content\images\back.bmp" />
+    <Content Include="Content\images\bg_main.jpg" />
     <Content Include="Content\images\bmp.png" />
+    <Content Include="Content\images\bmp_ele.png" />
     <Content Include="Content\images\bzm_32.ico" />
     <Content Include="Content\images\bzm_32.png" />
     <Content Include="Content\images\favicon.ico" />

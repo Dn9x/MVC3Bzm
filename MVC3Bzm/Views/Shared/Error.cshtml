@@ -1,9 +1,9 @@
 ﻿@model System.Web.Mvc.HandleErrorInfo
 
 @{
-    ViewBag.Title = "Error";
+    ViewBag.Title = "做梦也很累--错误";
 }
 
 <h2>
-    Sorry, an error occurred while processing your request.
+    @{var msg = ViewData["ErrorMsg"]; <div style="margin:100px auto;">@msg</div>}
 </h2>
