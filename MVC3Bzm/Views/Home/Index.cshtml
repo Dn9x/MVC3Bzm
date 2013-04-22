@@ -21,3 +21,15 @@
         <input type="hidden" id="Hid_Page" value="10" />
     </div>
 }
+
+<script id="lists" type="text/html">
+<% for (var i = 0; i < count; i ++) { %>
+    <div class='post_list'>
+    <div class='post_title'>
+        <a href='/Home/Detail/<%= list[0][i].ID %>' target='_blank' class='detail_a'><%= list[0][i].Title %></a></div>
+    <div class='post_content'><%== list[0][i].Content %></div>
+    <div class='post_info'><%= list[0][i].Date %>&nbsp;&nbsp;<a class='auth_a' href='#'><%= list[0][i].TagName %></a>
+    &nbsp&nbsp<a href='#' target='_blank' class='auth_a'><%= list[0][i].TagName %></a>
+    &nbsp&nbsp<a href='#' target='_blank' class='auth_a'>Tags</a></div></div>
+<% } %>
+</script>

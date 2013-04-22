@@ -37,7 +37,7 @@ namespace MVC3Bzm.Models.Util
             }
             
             //返回
-            return jsonName;
+            return list.Count + "&DS" + jsonName;
         }
 
         public static string DictionaryToJson(IDictionary<string, string> dictionary)

@@ -13,25 +13,21 @@
         var page = $("#Hid_Page").val();
 
         //加載初始
-        $.getJSON(
+        $.post(
             "/Home/NextPage",
             { "id": page },
-            function (json, status) {
+            function (dats, status) {
                 if (status = "success") {
-                    var list = "";
+                    var data = {
+                        count: dats.substr(0, dats.indexOf("&DS")),
+                        list: [eval('(' + dats.substr(dats.indexOf("&DS") + 3) + ')')]
+                    };
 
-                    $.each(json, function (i, item) {
-                        list += "<div class='post_list'><div class='post_title'><a href='/Home/Detail/" + item.ID + "' target='_blank' class='detail_a'>" + item.Title + "</a></div>" +
-                            "<div class='post_content'>" + item.Content + "</div>" +
-                            "<div class='post_info'>" + item.Date + "&nbsp;&nbsp;" +
-                            "<a class='auth_a' href='#'>" + item.TagName + "</a>" +
-                            "&nbsp&nbsp<a href='Home/About' target='_blank' class='auth_a'>" + item.TagName + "</a>" +
-                            "&nbsp&nbsp<a href='#' target='_blank' class='auth_a'>Tags</a></div></div>";
-                    });
+                    var html = template.render('lists', data);
 
                     $("#Hid_Page").val(Number(page) + 10);
 
-                    $("#next_page").before(list);
+                    $("#next_page").before(html);
                 }
             }
         );

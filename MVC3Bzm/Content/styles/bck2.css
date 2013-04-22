@@ -1,0 +1,14 @@
+﻿#pages
+{
+	left:0px;
+	top:0px;
+	width:100%;
+	background:url(../Images/tile.gif);
+	height:auto !important;
+	height:1000px;
+	min-height:1000px;
+	border:0px solid #CCCCCC;
+	z-index:1;
+	overflow:hidden;
+	padding:0px 0px 0px 0px;
+}
