@@ -92,6 +92,7 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="Content\images\back.bmp" />
+    <Content Include="Content\images\bck5.png" />
     <Content Include="Content\images\bg_main.jpg" />
     <Content Include="Content\images\bmp.png" />
     <Content Include="Content\images\bmp_ele.png" />
@@ -108,7 +109,9 @@
     <Content Include="Content\styles\bck1.css" />
     <Content Include="Content\styles\bck2.css" />
     <Content Include="Content\styles\index.css" />
+    <Content Include="Content\styles\bck3.css" />
     <Content Include="Global.asax" />
+    <Content Include="Scripts\head.min.js" />
     <Content Include="Scripts\jquery-1.4.2.min.js" />
     <Content Include="Scripts\jquery.cookie.js" />
     <Content Include="Scripts\public.js" />
