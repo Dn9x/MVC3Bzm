@@ -23,7 +23,7 @@ namespace MVC3Bzm.Controllers.Filters
             Exception ex = filterContext.Exception;
 
             var error = new Errors(){
-                Error = ex.Message
+                Error = filterContext.HttpContext.Request.Url.AbsoluteUri + ":" + ex.Message
             };
 
             IErrors eSer = ServiceBuilder.BuildErrorService();

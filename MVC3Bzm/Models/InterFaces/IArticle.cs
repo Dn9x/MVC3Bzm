@@ -15,7 +15,7 @@ namespace Mvc3Demo3.Models.InterFaces
         /// </summary>
         /// <param name="article"></param>
         /// <returns></returns>
-        int InsertArticle(Articles article);
+        string InsertArticle(Articles article);
 
 
         /// <summary>

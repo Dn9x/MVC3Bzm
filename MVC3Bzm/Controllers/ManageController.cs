@@ -9,6 +9,7 @@ using MVC3Bzm.Models.Entity;
 using MVC3Bzm.Models.Util;
 using MVC3Bzm.Controllers.Filters;
 using System.Security.Cryptography;
+using Mvc3Demo3.Models.Entity;
 
 namespace MVC3Bzm.Controllers
 {
@@ -81,6 +82,12 @@ namespace MVC3Bzm.Controllers
         [ExceptionFilter()]
         public ActionResult Notes()
         {
+            IAccess iac = new AccessService();
+
+            List<Access> list = iac.SelectListAccess(0, 50);
+
+            ViewBag.Notes = list;
+
             return View();
         }
 
@@ -94,7 +101,38 @@ namespace MVC3Bzm.Controllers
         [ExceptionFilter()]
         public ActionResult Post()
         {
+            ITag it = new TagService();
+
+            //查询所有标签
+            List<Tags> list = it.SelectTagList();
+
+            ViewBag.Tag = list;
+
             return View();
+        }
+
+
+        /// <summary>
+        /// 发表文章
+        /// </summary>
+        /// <returns></returns>
+        [AuthFilter()]
+        [LoggerFilter()]
+        [ExceptionFilter()]
+        [ValidateInput(false)]
+        public ActionResult Posts()
+        {
+            Admins admin = (Admins)Session["usersd"];
+
+            var article = new Articles() 
+            {
+                Title = HttpUtility.HtmlEncode(Request.Form["Title"]),
+                TagId = Convert.ToInt32(HttpUtility.HtmlEncode(Request.Form["Tag"])),
+                Content = HttpUtility.HtmlEncode(Request.Form["content"]),
+                AdminId = admin.ID
+            };
+
+            return RedirectToAction("Post", "Manage");
         }
 
 
@@ -110,6 +148,19 @@ namespace MVC3Bzm.Controllers
             Session.RemoveAll();       //清空session
 
             return RedirectToAction("Login", "Manage");
+        }
+
+
+        /// <summary>
+        /// 左侧导航
+        /// </summary>
+        /// <returns></returns>
+        [AuthFilter()]
+        [LoggerFilter()]
+        [ExceptionFilter()]
+        public ActionResult Left()
+        {
+            return View();
         }
 
     }

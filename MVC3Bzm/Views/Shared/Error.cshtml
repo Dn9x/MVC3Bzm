@@ -4,6 +4,6 @@
     ViewBag.Title = "做梦也很累--错误";
 }
 
-<h2>
-    @{var msg = ViewData["ErrorMsg"]; <div style="margin:100px auto;">@msg</div>}
-</h2>
+@{var msg = ViewData["ErrorMsg"];}
+<div style="margin:30px auto; width:80%; height:auto; color:Red; padding:10px auto;">@msg</div>
+

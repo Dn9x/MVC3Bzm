@@ -15,9 +15,15 @@ namespace Mvc3Demo3.Models.Services
     {
         #region IArticle 成员
         
-        public int InsertArticle(Entity.Articles article)
+        public string InsertArticle(Entity.Articles article)
         {
-            return 1;
+            string connStr = ConfigurationManager.AppSettings["DBConn"];
+
+            string sql = String.Format("insert bzm_article(article_title, article_content, article_date, article_tagid, article_access, article_adminid) value('{0}', '{1}', sysdate(), {2}, 1, {3})", article.Title, article.Content, article.TagId, article.AdminId);
+            
+            string result = MySqlUtil.ExecuteSql(connStr, sql);
+
+            return result;
         }
 
         public int UpdateArticle(Entity.Articles article)

@@ -1,0 +1,40 @@
+﻿@{
+    ViewBag.Title = "导航";
+    Layout = null;  
+}
+
+<div style="margin:80px auto; width:100%; height:auto; color:#333333; text-decoration:none; cursor:pointer;">
+    <table width="200" height="266" border="0" align="center">
+        <tr>
+        <td height="50" align="center">
+            <asp:Label ID="Lbl_Name" runat="server" Text=""></asp:Label>
+        </td>
+        </tr>
+        <tr>
+        <td height="50" align="center">
+                <a href="javascript:PageLoad('Post');" style="color:#333333; text-decoration:none; cursor:pointer;">发表文章</a>
+        </td>
+        </tr>
+        <tr>
+        <td height="50" align="center">
+                <a href="javascript:PageLoad('Notes');" style="color:#333333; text-decoration:none; cursor:pointer;">浏览记录</a>
+        </td>
+        </tr>
+        <tr>
+        <td height="50" align="center">
+        <a href="../Home/Index" target="_blank" style="color:#333333; text-decoration:none; cursor:pointer;">去前端</a>
+        </td>
+        </tr>
+        <tr>
+        <td height="50" align="center">
+                <a href="../Manage/LoginOut" style="color:#333333; text-decoration:none; cursor:pointer;">登出</a>
+        </td>
+        </tr>
+    </table>
+</div>
+
+<script type="text/javascript" language="javascript">
+    function PageLoad(url) {
+        parent.RightMain.location.href = url;
+    }
+</script>

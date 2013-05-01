@@ -5,6 +5,8 @@ using System.Web;
 using MVC3Bzm.Models.InterFaces;
 using Mvc3Demo3.Models.Util;
 using System.Configuration;
+using MVC3Bzm.Models.Entity;
+using MySql.Data.MySqlClient;
 
 namespace MVC3Bzm.Models.Services
 {
@@ -21,9 +23,44 @@ namespace MVC3Bzm.Models.Services
             return result;
         }
 
-        public List<Entity.Access> SelectListAccess(int minPage, int maxPage)
+        public List<Access> SelectListAccess(int minPage, int maxPage)
         {
-            throw new NotImplementedException();
+            string connStr = ConfigurationManager.AppSettings["DBConn"];
+
+            List<Access> list = new List<Access>();
+
+            MySqlConnection conn = new MySqlConnection(connStr);
+
+            conn.Open();
+
+            string sql = String.Format("select id, acc_url as url, acc_ip as ip, acc_dns as dns, acc_browser as browser, acc_date as date from bzm_access limit {0}, {1}", minPage, maxPage);
+
+            MySqlCommand cmd = new MySqlCommand(sql, conn);
+
+            MySqlDataReader dr = cmd.ExecuteReader();
+
+            Access accs = null;
+
+            while (dr.Read())
+            {
+                accs = new Access();
+
+                accs.ID = dr.GetInt32("id");
+                accs.Url = dr.GetString("url");
+                accs.Ip = dr.GetString("ip");
+                accs.Date = dr.GetDateTime("date");
+                accs.Dns = dr.GetString("dns");
+                accs.Browser = dr.GetString("browser");
+
+                list.Add(accs);
+            }
+
+            dr.Close();
+
+            conn.Close();
+
+            return list;
         }
+
     }
 }
