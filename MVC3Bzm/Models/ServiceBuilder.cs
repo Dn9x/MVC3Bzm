@@ -52,6 +52,16 @@ namespace Mvc3Demo3.Models
             return new ErrorService();
         }
 
+        /// <summary>
+        /// 创建Tag服务
+        /// </summary>
+        /// <returns></returns>
+        public static ITag BuildTagService()
+        {
+            return new TagService();
+        }
+
+
 
     }
 }

@@ -11,6 +11,7 @@ using System.Data;
 using MVC3Bzm.Models.InterFaces;
 using MVC3Bzm.Models.Entity;
 using MVC3Bzm.Controllers.Filters;
+using Tree.MvcTree.Models;
 
 namespace Mvc3Demo3.Controllers
 {
@@ -44,11 +45,11 @@ namespace Mvc3Demo3.Controllers
             //创建对象
             IArticle iArt = ServiceBuilder.BuildArticleService();
 
-            ViewData["Article"] = iArt.SelectArticleById(id);
+            ViewData["Article"] = iArt.SelectArticleById(HttpUtility.HtmlEncode(id));
 
             IComment iComm = ServiceBuilder.BuildCommentService();
 
-            ViewData["Comments"] = iComm.SelectCommentsByArticleId(id);
+            ViewData["Comments"] = iComm.SelectCommentsByArticleId(HttpUtility.HtmlEncode(id));
 
             return View();
         }
@@ -65,7 +66,7 @@ namespace Mvc3Demo3.Controllers
             //创建对象
             IArticle iArt = ServiceBuilder.BuildArticleService();
 
-            string json = JsonUtil.ListToJson(iArt.SelectArticles(id, "10"));
+            string json = JsonUtil.ListToJson(iArt.SelectArticles(HttpUtility.HtmlEncode(id), "10"));
 
             return Content(json);
         }
@@ -80,9 +81,9 @@ namespace Mvc3Demo3.Controllers
         {
             Comments comment = new Comments
             {
-                ArticleId = Convert.ToInt32(title),
-                User = name,
-                Content = content,
+                ArticleId = Convert.ToInt32(HttpUtility.HtmlEncode(title)),
+                User = HttpUtility.HtmlEncode(name),
+                Content = HttpUtility.HtmlEncode(content),
             };
 
             IComment iComm = ServiceBuilder.BuildCommentService();
@@ -93,7 +94,7 @@ namespace Mvc3Demo3.Controllers
             //得到评论列表
             List<Comments> list = iComm.SelectCommentsByArticleId(title);
 
-            result = JsonUtil.ListToJson(list);
+            result = JsonUtil.ListToJson1(list);
 
             return Content(result);
         }
@@ -108,6 +109,25 @@ namespace Mvc3Demo3.Controllers
         {
             return View();
         }
+
+        /// <summary>
+        /// Tags
+        /// </summary>
+        /// <returns></returns>
+        [LoggerFilter()]
+        [ExceptionFilter()]
+        public ActionResult Tags() {
+            ITag it = ServiceBuilder.BuildTagService();
+
+            //得到评论列表
+            List<TreeData> result = it.TreeList(it.SelectTagList());
+
+            ViewBag.TreeData = result;
+
+            return View();
+        }
+
+
 
     }
 }

@@ -73,51 +73,17 @@
         }
     });
 
-    $("#header span").click(function () {
-        //判断是否有cookie
-        if (document.cookie.length > 0) {
-            //判断是否有这个cookie
-            var cs = document.cookie.indexOf("pagesc=");
 
-            //如果有
-            if (cs != -1) {
-                //起始索引
-                var start = cs + "pagesc".length + 1;
-
-                //结束索引
-                var end = document.cookie.indexOf(";", cs);
-
-                //判断是否正确
-                if (end == -1) {
-                    end = document.cookie.length;
-                }
-
-                cs = unescape(document.cookie.substring(start, end));
-            }
-
-            //判断样式
-            if (cs == "1") {
-                document.cookie = "pagesc=" + escape("2");
-
-                $("#pages").removeClass("pages1").addClass("pages2");
-            } else if (cs == "2") {
-                //设置cookie
-                document.cookie = "pagesc=" + escape("1");
-
-                $("#pages").removeClass("pages2").addClass("pages1");
-            } else {
-                //设置cookie
-                document.cookie = "pagesc=" + escape("1");
-
-                $("#pages").removeClass("pages2").addClass("pages1");
-            }
-        } else {    //第一次打开
-            //设置cookie
-            document.cookie = "pagesc=" + escape("1");
-
-            $("#pages").removeClass().addClass("pages1");
-        }
+    //返回顶部的js方法
+    $("#foots").hover(function () {
+        $(this).html("").html("顶部").css({ "border": "1px solid #CCC", "border-radius": "3px" });
+    }, function () {
+        $(this).html("").html("<img src='../../Content/images/up_48.png' width='48px' height='48px' />").css("border", "0px");
+    }).click(function () {
+        //跳转到锚记
+        window.location.href = "#top";
     });
+
 });
 
 /*判斷各個瀏覽器*/

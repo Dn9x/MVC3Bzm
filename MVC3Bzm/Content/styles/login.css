@@ -1,0 +1,76 @@
+﻿body 
+{
+	margin:0px;
+	padding:0px;
+	font-family:Arial,Tahoma,Verdana;
+}
+
+fieldset
+{
+	position:relative;
+	margin:120px auto;
+	width:500px;
+	height:auto;
+	border:1px solid #AAA;
+	border-radius:5px;
+	padding:10px 10px;
+}
+
+#login
+{
+	margin:2px auto;
+	padding:4px auto;
+	width:98%;
+	height:auto;
+}
+
+.login_title
+{
+	margin:20px auto;
+	width:90%;
+	height:40px;
+	line-height:40px;
+	text-align:right;
+}
+
+.login_title_b
+{
+	margin:20px auto 1px auto;
+}
+
+.login_input
+{
+	width:99%;
+	height:30px;
+	line-height:30px;
+	border:1px solid #CCC;
+	font-size:20px;
+	font-weight:bold;
+	border-radius:5px;	
+}
+
+.login_button
+{
+	width:30%;
+	height:40px;
+	line-height:40px;
+	border:1px solid #CCC;
+	font-size:20px;
+	font-weight:bold;
+	border-radius:5px;	
+	background-color:transparent;
+	cursor:pointer;
+}
+
+.login_button:hover
+{
+	width:30%;
+	height:40px;
+	line-height:40px;
+	border:1px solid #CCC;
+	font-size:20px;
+	font-weight:bold;
+	border-radius:5px;	
+	color:Teal;
+	background-color:Silver;
+}

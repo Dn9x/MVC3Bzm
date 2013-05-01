@@ -13,6 +13,8 @@ namespace Mvc3Demo3.Models.Services
 {
     public class ArticleService : IArticle
     {
+        #region IArticle 成员
+        
         public int InsertArticle(Entity.Articles article)
         {
             return 1;
@@ -38,7 +40,6 @@ namespace Mvc3Demo3.Models.Services
 
             string sql = String.Format("select r.id as rid, r.article_title as title, r.article_Content as content, r.article_Date as date, r.article_access as access, t.tag_Name as tag, t.id as tid, u.admin_Name as uname, u.admin_Head as uhead, u.id as uid from bzm_article r, bzm_admin u, bzm_tag t where r.article_AdminId=u.id and r.article_TagId=t.id and r.id={0}", id);
 
-            
             MySqlCommand cmd = new MySqlCommand(sql, conn);
 
             MySqlDataReader dr = cmd.ExecuteReader();
@@ -118,5 +119,43 @@ namespace Mvc3Demo3.Models.Services
 
             return dt;
         }
+
+
+        public List<Articles> SelectArticlesByTagId(string tagId)
+        {
+            string connStr = ConfigurationManager.AppSettings["DBConn"];
+
+            MySqlConnection conn = new MySqlConnection(connStr);
+
+            conn.Open();
+
+            string sql = String.Format("select id, article_title, article_date, article_tagId from bzm_article where article_tagid={0}", tagId);
+
+            MySqlCommand cmd = new MySqlCommand(sql, conn);
+
+            MySqlDataReader dr = cmd.ExecuteReader();
+
+            List<Articles> list = new List<Articles>();;
+
+            while (dr.Read())
+            {
+                Articles arts = new Articles();
+
+                arts.ID = dr.GetInt32(0);
+                arts.Title = dr.GetString(1);
+                arts.Date = dr.GetDateTime(2);
+                arts.TagId = dr.GetInt32(3);
+
+                list.Add(arts);
+            }
+
+            dr.Close();
+
+            conn.Close();
+
+            return list;
+        }
+
+        #endregion
     }
 }

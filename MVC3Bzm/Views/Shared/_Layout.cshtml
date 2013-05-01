@@ -3,15 +3,16 @@
 <head>
     <title>@ViewBag.Title</title>
     <link href="@Url.Content("~/Content/styles/index.css")" rel="stylesheet" type="text/css" />
+    <link href="@Url.Content("~/Content/styles/login.css")" rel="stylesheet" type="text/css" />
     <link rel="icon" href="@Url.Content("~/Content/images/favicon.ico")" type="image/x-icon" />
 
     <script src="@Url.Content("~/Scripts/head.min.js")" type="text/javascript"></script>
     <script>
-        head.js("Scripts/jquery-1.4.2.min.js")
-            .js("Scripts/template.js")
-            .js("Scripts/jquery.cookie.js")
-            .js("Scripts/public.js")
-            .js("Scripts/skip.js");
+        head.js("@Url.Content("~/Scripts/jquery-1.4.2.min.js")")
+            .js("@Url.Content("~/Scripts/template.js")")
+            .js("@Url.Content("~/Scripts/jquery.cookie.js")")
+            .js("@Url.Content("~/Scripts/public.js")")
+            .js("@Url.Content("~/Scripts/skip.js")");
     </script>
 </head>
 <body>
@@ -20,13 +21,17 @@
             <input type="checkbox" class="stylec" id="bck1" value="bck1" />
             <input type="checkbox" class="stylec" id="bck2" value="bck2" />
             <input type="checkbox" class="stylec" id="bck3" value="bck3" />
+            <a name="Top"></a>
         </div>
         
         <div id="main">
             @RenderBody()
         </div>
         
-        <div id="footer">
+        <div id="footer"></div>
+
+        <div id="foots">
+            <img src="../../Content/images/up_48.png" width="48px" height="48px" />
         </div>
     </div>
 </body>

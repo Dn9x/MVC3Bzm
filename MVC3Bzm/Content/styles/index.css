@@ -2,26 +2,7 @@
 {
 	margin:0px;
 	padding:0px;
-}
-
-.pages1
-{
-	background:url(../Images/bmp.png);
-}
-
-.pages2
-{
-	background:url(../Images/tile.gif);
-}
-
-.pages3
-{
-	background:url(../Images/bmp_ele.png);
-}
-
-.pages4
-{
-	background:url(../Images/bg_main.jpg);
+	font-family:Arial,Tahoma,Verdana;
 }
 
 #header
@@ -40,15 +21,6 @@
     text-decoration:underline;
 }
 
-#header span
-{
-    font-size:12px;
-    color:#222222;
-    text-decoration:underline;
-    cursor:pointer;
-    padding-right:20px;
-}
-
 #main
 {
     margin:30px auto;
@@ -64,6 +36,25 @@
 	z-index:2;
 	position:absolute;
 	background-color:White;
+}
+
+#foots
+{
+	position:fixed;
+	right:2px;
+	bottom:2px;
+	border:0px;
+	padding:1px auto;
+	width:50px;
+	height:50px;
+	line-height:50px;
+	z-index:20;
+	font-size:16px;
+	font-weight:bold;
+	color:Gray;
+	font-family:Arial,Tahoma,Verdana;
+	cursor:pointer;
+	text-align:center;
 }
 
 .post_list
@@ -111,6 +102,7 @@
 	margin:2px auto;
 	border:0px solid #CCC;
 	z-index:3;
+	font-family:Arial,Tahoma,Verdana;
 }
 
 .post_title a
@@ -121,6 +113,7 @@
 	line-height:24px;
 	font-weight:bold;
 	text-align:left;
+	font-family:Arial,Tahoma,Verdana;
 }
 
 #next_page div
@@ -139,6 +132,7 @@
 	margin:2px auto;
 	border:0px solid #CCC;
 	word-wrap:break-word;
+	font-family:Arial,Tahoma,Verdana;
 	z-index:3;
 }
 
@@ -151,6 +145,7 @@
 	height:14px;
 	margin:2px auto;
 	border:0px solid #CCC;
+	font-family:Arial,Tahoma,Verdana;
 	z-index:3;
 }
 

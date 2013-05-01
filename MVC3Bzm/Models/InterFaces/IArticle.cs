@@ -50,6 +50,14 @@ namespace Mvc3Demo3.Models.InterFaces
         /// <returns></returns>
         List<Articles> SelectArticles(string minPage, string maxPage);
 
+        /// <summary>
+        /// 查询文章列表通过TagId
+        /// </summary>
+        /// <param name="minPage"></param>
+        /// <param name="maxPage"></param>
+        /// <returns></returns>
+        List<Articles> SelectArticlesByTagId(string tagId);
+
 
         /// <summary>
         /// 查询文章列表
