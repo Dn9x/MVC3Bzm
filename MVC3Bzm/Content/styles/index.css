@@ -57,22 +57,6 @@
 	text-align:center;
 }
 
-.post_list
-{
-	margin:10px auto;
-	padding:10px 6px;
-	width:600px;
-	overflow:hidden;
-	height:auto;
-	border:1px solid #CCCCCC;
-	border-radius:5px;
-	text-align:center;
-	box-shadow:4px 2px 6px #777;
-	font-family:Arial,Tahoma,Verdana;
-	background-color:White;
-	z-index:2;
-}
-
 .reply_list
 {
 	margin:10px auto;

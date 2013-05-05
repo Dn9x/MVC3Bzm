@@ -30,11 +30,23 @@ namespace MVC3Bzm.Controllers.Filters
 
             eSer.InsertErrors(error);
 
-            //把数据传到错误页面上面
-            filterContext.Controller.ViewData["ErrorMsg"] = filterContext.Exception.Message;
+            //获取controll名称
+            string contro = filterContext.HttpContext.Request.Url.AbsoluteUri;
+
+            if (contro.Contains("Home"))
+            {
+                //把数据传到错误页面上面
+                filterContext.Controller.ViewData["ErrorMsg"] = "网站发生错误了！可以麻烦告诉站长一下吗？<br/><a href='mailto:xiuxu123@live.cn' style='color:#888888; text-decoration:none;'>站长邮箱</a>";
+            }
+            else
+            {
+                //把数据传到错误页面上面
+                filterContext.Controller.ViewData["ErrorMsg"] = filterContext.Exception.Message;
+            }
 
             //设置页面跳转
-            filterContext.Result = new ViewResult() {
+            filterContext.Result = new ViewResult()
+            {
                 ViewName = "Error",
                 ViewData = filterContext.Controller.ViewData
             };

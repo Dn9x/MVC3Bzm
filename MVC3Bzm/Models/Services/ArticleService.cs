@@ -162,6 +162,19 @@ namespace Mvc3Demo3.Models.Services
             return list;
         }
 
+        public string UpdateAccess(string id)
+        {
+            string connStr = ConfigurationManager.AppSettings["DBConn"];
+
+            string sql = String.Format("update bzm_article set article_access = article_access+1, article_Date=article_Date where id={0}", id);
+
+            string result = MySqlUtil.ExecuteSql(connStr, sql);
+
+            return result;
+        }
+
+
         #endregion
+
     }
 }

@@ -5,6 +5,8 @@ using System.Web;
 using System.Web.Mvc;
 using MVC3Bzm.Models.Entity;
 using Mvc3Demo3.Models;
+using Mvc3Demo3.Models.InterFaces;
+using System.Text.RegularExpressions;
 
 namespace MVC3Bzm.Controllers.Filters
 {
@@ -19,6 +21,33 @@ namespace MVC3Bzm.Controllers.Filters
             string brow1 = filterContext.HttpContext.Request.Browser.Browser;
             string brow2 = filterContext.HttpContext.Request.Browser.Version;
             string brow3 = filterContext.HttpContext.Request.Browser.Type;
+
+            //获取acton名称
+            string action = filterContext.ActionDescriptor.ActionName;
+
+            //获取controll名称
+            string contro = filterContext.ActionDescriptor.ControllerDescriptor.ControllerName;
+
+            //判断是否是访问文章详情
+            if (contro == "Home" && action == "Detail")
+            {
+                //获取url
+                string parms = filterContext.HttpContext.Request.Url.ToString();
+
+                //获取参数
+                parms = parms.Substring(parms.IndexOf("Detail/") + 7, parms.Length - parms.IndexOf("Detail/") - 7);
+
+                //正则验证数字
+                Regex r = new Regex(@"^[0-9]+$");
+
+                if(r.Match(parms).Success)
+                {
+                    //创建对象
+                    IArticle iArt = ServiceBuilder.BuildArticleService();
+
+                    iArt.UpdateAccess(parms);
+                }
+            }
 
             //浏览器
             string brow = brow1 + brow2 + " " + brow3;

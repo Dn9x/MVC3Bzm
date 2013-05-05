@@ -5,5 +5,5 @@
 }
 
 @{var msg = ViewData["ErrorMsg"];}
-<div style="margin:30px auto; width:80%; height:auto; color:Red; padding:10px auto;">@msg</div>
+<div style="margin:90px auto; width:80%; height:50px; line-height:50px; text-align:center; font-size:16px; color:Red;">@Html.Raw(@msg.ToString())</div>
 

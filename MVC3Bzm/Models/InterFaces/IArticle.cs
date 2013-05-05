@@ -68,5 +68,13 @@ namespace Mvc3Demo3.Models.InterFaces
         DataTable SelectArticles2(string minPage, string maxPage);
 
 
+        /// <summary>
+        /// 修改文章的访问量
+        /// </summary>
+        /// <param name="id"></param>
+        /// <returns></returns>
+        string UpdateAccess(string id);
+
+
     }
 }

@@ -1,0 +1,40 @@
+﻿body 
+{
+	padding:0px;
+	margin:0px;
+	font-family:Arial,Tahoma,Verdana;
+}
+
+#main
+{
+	position:relative;
+	margin:0px auto;
+	width:100%;
+	height:auto;
+	z-index:1;
+}
+
+#left
+{
+	margin:1px auto;
+	width:18%;
+	min-width:210px;
+	height:auto !important;
+	height:700px;
+	font-size:18px;
+	min-height:700px;
+	float:left;
+	z-index:2;
+	padding-top:100px;
+}
+
+#right
+{
+	margin:1px auto;
+	width:79%;
+	height:auto !important;
+	height:850px;
+	min-height:850px;
+	float:left;
+	z-index:2;
+}

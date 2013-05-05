@@ -374,7 +374,6 @@
     <Content Include="Content\images\rss_32.png" />
     <Content Include="Content\images\search_24.png" />
     <Content Include="Content\images\search_32.png" />
-    <Content Include="Content\images\tile.gif" />
     <Content Include="Content\images\up_32.png" />
     <Content Include="Content\images\up_48.png" />
     <Content Include="Content\styles\bck1.css" />
@@ -389,7 +388,9 @@
     <Content Include="Scripts\public.js" />
     <Content Include="Scripts\skip.js" />
     <Content Include="Scripts\template.js" />
-    <Content Include="Web.config" />
+    <Content Include="Web.config">
+      <SubType>Designer</SubType>
+    </Content>
     <Content Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </Content>
@@ -401,7 +402,9 @@
     <Content Include="Views\Home\Index.cshtml" />
     <Content Include="Views\Shared\Error.cshtml" />
     <Content Include="Views\Shared\_Layout.cshtml" />
-    <Content Include="Views\Web.config" />
+    <Content Include="Views\Web.config">
+      <SubType>Designer</SubType>
+    </Content>
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
