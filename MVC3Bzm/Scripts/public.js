@@ -134,31 +134,6 @@ function SetCookie() {
     }
 }
 
-function TagList(op) {
-    $.getJSON(
-        "Pub/Ashx/Index.ashx",
-        { "page": "0", "tag":op},
-        function (json, status) {
-            if (status = "success") {
-                var list = "";
-
-                $.each(json, function (i, item) {
-                    list += "<div class='post_list'><div class='post_title'><a href='Detail.aspx?op=" + item.rid + "' target='_blank' class='detail_a'>" + item.title + "</a></div>" +
-                            "<div class='post_content'>" + item.content + "</div>" +
-                            "<div class='post_info'>" + item.date + "&nbsp;&nbsp;" +
-                            "<a href='javascript:TagList(" + item.tid + ")' class='auth_a'>" + item.tag + "</a>" +
-                            "&nbsp&nbsp<a href='Web.aspx' target='_blank' class='auth_a'>" + item.uname + "</a>" +
-                            "&nbsp&nbsp<a href='List.aspx' target='_blank' class='auth_a'>Tags</a></div></div>";
-                });
-
-                $("#Hid_Tag").val(op);
-                $("#main").html(list);
-            }
-        }
-    );
-
-}
-
 //監控鍵盤
 $(document).keypress(function (e) {
     //判断
