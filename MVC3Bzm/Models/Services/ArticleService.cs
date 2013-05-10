@@ -8,6 +8,7 @@ using MySql.Data.MySqlClient;
 using System.Data;
 using Mvc3Demo3.Models.Util;
 using System.Configuration;
+using MVC3Bzm.Models.Util;
 
 namespace Mvc3Demo3.Models.Services
 {
@@ -44,7 +45,7 @@ namespace Mvc3Demo3.Models.Services
 
             conn.Open();
 
-            string sql = String.Format("select r.id as rid, r.article_title as title, r.article_Content as content, r.article_Date as date, r.article_access as access, t.tag_Name as tag, t.id as tid, u.admin_Name as uname, u.admin_Head as uhead, u.id as uid from bzm_article r, bzm_admin u, bzm_tag t where r.article_AdminId=u.id and r.article_TagId=t.id and r.id={0}", id);
+            string sql = String.Format("select r.id as rid, r.article_title as title, r.article_Content as content, r.article_Date as date, r.article_access as access, t.tag_Name as tag, t.id as tid, u.admin_Name as uname, u.admin_Head as uhead, u.id as uid from bzm_article r, bzm_admin u, bzm_tag t where r.article_AdminId=u.id and r.article_TagId=t.id and r.id={0}", InputUtil.ReplaceInput(id));
 
             MySqlCommand cmd = new MySqlCommand(sql, conn);
 

@@ -7,6 +7,7 @@ using MVC3Bzm.Models.Entity;
 using MySql.Data.MySqlClient;
 using Mvc3Demo3.Models.Util;
 using System.Configuration;
+using MVC3Bzm.Models.Util;
 
 namespace MVC3Bzm.Models.Services
 {
@@ -17,7 +18,7 @@ namespace MVC3Bzm.Models.Services
         {
             string connStr = ConfigurationManager.AppSettings["DBConn"];
 
-            string sql = String.Format("insert into bzm_comment(comm_user, comm_content, comm_date, comm_articleId, remark) value('{0}', '{1}', sysdate(), {2}, null)", comment.User, comment.Content, comment.ArticleId);
+            string sql = String.Format("insert into bzm_comment(comm_user, comm_content, comm_date, comm_articleId, remark) value('{0}', '{1}', sysdate(), {2}, null)", InputUtil.ReplaceInput(comment.User), InputUtil.ReplaceInput(comment.Content), InputUtil.ReplaceInput(comment.ArticleId+""));
 
             string result = MySqlUtil.ExecuteSql(connStr, sql);
 
@@ -35,7 +36,7 @@ namespace MVC3Bzm.Models.Services
 
             conn.Open();
 
-            string sql = String.Format("select id, comm_user as uname, comm_content as content, comm_date as date, comm_articleId as rid from bzm_comment where comm_articleId={0} order by comm_date desc", articleId);
+            string sql = String.Format("select id, comm_user as uname, comm_content as content, comm_date as date, comm_articleId as rid from bzm_comment where comm_articleId={0} order by comm_date desc", InputUtil.ReplaceInput(articleId+""));
 
             MySqlCommand cmd = new MySqlCommand(sql, conn);
 

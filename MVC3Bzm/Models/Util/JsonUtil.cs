@@ -19,25 +19,33 @@ namespace MVC3Bzm.Models.Util
         /// <returns></returns>
         public static string ListToJson<T>(IList<T> list)
         {
-            //获取对象
-            object obj = list[0];
-
-            //获取json的名称
-            string jsonName = obj.GetType().Name;
-
-            //得到转换对象
-            DataContractJsonSerializer json = new DataContractJsonSerializer(list.GetType());
-
-            //通过刘转换
-            using (MemoryStream stream = new MemoryStream())
+            if (list.Count > 0)
             {
-                json.WriteObject(stream, list);
+                //获取对象
+                object obj = list[0];
 
-                jsonName = Encoding.UTF8.GetString(stream.ToArray());
+                //获取json的名称
+                string jsonName = obj.GetType().Name;
+
+                //得到转换对象
+                DataContractJsonSerializer json = new DataContractJsonSerializer(list.GetType());
+
+                //通过刘转换
+                using (MemoryStream stream = new MemoryStream())
+                {
+                    json.WriteObject(stream, list);
+
+                    jsonName = Encoding.UTF8.GetString(stream.ToArray());
+                }
+
+                //返回
+                return list.Count + "&DS" + jsonName;
+            }
+            else
+            {
+                return null;
             }
             
-            //返回
-            return list.Count + "&DS" + jsonName;
         }
 
         /// <summary>

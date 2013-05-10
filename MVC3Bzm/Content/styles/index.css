@@ -21,6 +21,22 @@
     text-decoration:underline;
 }
 
+#pages
+{
+	left:0px;
+	top:0px;
+	width:100%;
+	height:auto !important;
+	height:1000px;
+	min-height:1000px;
+	border:0px solid #CCCCCC;
+	z-index:1;
+	overflow:hidden;
+	padding:0px 0px 0px 0px;
+	background:url(../images/bck5.png);
+	/*background: #DFDFDF;*/
+}
+
 #main
 {
     margin:30px auto;
@@ -55,6 +71,22 @@
 	/*font-family:Arial,Tahoma,Verdana;*/font-family:'Comic Sans MS',cursive;
 	cursor:pointer;
 	text-align:center;
+}
+
+.post_list
+{
+	margin:10px auto;
+	padding:10px 6px;
+	width:600px;
+	overflow:hidden;
+	height:auto;
+	border:1px solid #CCCCCC;
+	border-radius:5px;
+	text-align:center;
+	box-shadow:4px 2px 6px #777;
+	/*font-family:Arial,Tahoma,Verdana;*/font-family:'Comic Sans MS',cursive;
+	z-index:2;
+	background: #EFEFEF;
 }
 
 .reply_list

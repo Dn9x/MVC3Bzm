@@ -376,17 +376,13 @@
     <Content Include="Content\images\search_32.png" />
     <Content Include="Content\images\up_32.png" />
     <Content Include="Content\images\up_48.png" />
-    <Content Include="Content\styles\bck1.css" />
-    <Content Include="Content\styles\bck2.css" />
     <Content Include="Content\styles\index.css" />
-    <Content Include="Content\styles\bck3.css" />
     <Content Include="Content\styles\login.css" />
     <Content Include="Global.asax" />
     <Content Include="Scripts\head.min.js" />
     <Content Include="Scripts\jquery-1.4.2.min.js" />
     <Content Include="Scripts\jquery.cookie.js" />
     <Content Include="Scripts\public.js" />
-    <Content Include="Scripts\skip.js" />
     <Content Include="Scripts\template.js" />
     <Content Include="Web.config">
       <SubType>Designer</SubType>
@@ -454,7 +450,7 @@
         <WebProjectProperties>
           <UseIIS>False</UseIIS>
           <AutoAssignPort>True</AutoAssignPort>
-          <DevelopmentServerPort>4894</DevelopmentServerPort>
+          <DevelopmentServerPort>2073</DevelopmentServerPort>
           <DevelopmentServerVPath>/</DevelopmentServerVPath>
           <IISUrl>
           </IISUrl>

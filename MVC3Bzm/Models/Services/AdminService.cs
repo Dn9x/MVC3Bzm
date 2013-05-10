@@ -6,6 +6,7 @@ using MVC3Bzm.Models.InterFaces;
 using MVC3Bzm.Models.Entity;
 using System.Configuration;
 using MySql.Data.MySqlClient;
+using MVC3Bzm.Models.Util;
 
 namespace MVC3Bzm.Models.Services
 {
@@ -21,7 +22,7 @@ namespace MVC3Bzm.Models.Services
 
             conn.Open();
 
-            string sql = String.Format("select id, admin_name, admin_pswd, admin_sex, admin_email, admin_qq, admin_tel, admin_birth, admin_motto from bzm_admin where admin_name='{0}' and admin_pswd='{1}'", name, pswd);
+            string sql = String.Format("select id, admin_name, admin_pswd, admin_sex, admin_email, admin_qq, admin_tel, admin_birth, admin_motto from bzm_admin where admin_name='{0}' and admin_pswd='{1}'", InputUtil.ReplaceInput(name), InputUtil.ReplaceInput(pswd));
 
             MySqlCommand cmd = new MySqlCommand(sql, conn);
 

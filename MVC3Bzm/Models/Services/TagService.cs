@@ -80,7 +80,7 @@ namespace MVC3Bzm.Models.Services
                     //循环生成Tag子类
                     for (int j = 0; j < arts.Count; j++)
                     {
-                        var title = "<a href='Detail/" + arts[j].ID + "' target='_blank'>" + arts[j].Title + "</a>";
+                        var title = "<a href='Detail/" + arts[j].ID + "' target='_blank' title='" + arts[j].Date + "'>" + arts[j].Title + "</a>";
                         result.Add(new TreeData((j + tags.Count) * 2, title, "", "", "", null, false, i));
                     }
                 }
