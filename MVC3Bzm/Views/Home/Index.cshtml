@@ -1,13 +1,13 @@
-﻿@model Mvc3Demo3.Models.Entity.Articles
+﻿@using MVC3Bzm.Models.Entity;
 
 @{
     ViewBag.Title = "做梦也很累";
 }
 
 @{
-    List<Mvc3Demo3.Models.Entity.Articles> list = ViewData["Articles"] as List<Mvc3Demo3.Models.Entity.Articles>;
+    List<Articles> list = ViewData["Articles"] as List<Articles>;
      
-    foreach (Mvc3Demo3.Models.Entity.Articles art in list)
+    foreach (Articles art in list)
     {
         <div class='post_list'>
             <div class='post_title'>@Html.ActionLink(art.Title, "Detail", new { id = art.ID }, new { target = "_blank" })</div>

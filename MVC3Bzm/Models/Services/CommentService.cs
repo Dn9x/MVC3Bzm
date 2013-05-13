@@ -5,7 +5,7 @@ using System.Web;
 using MVC3Bzm.Models.InterFaces;
 using MVC3Bzm.Models.Entity;
 using MySql.Data.MySqlClient;
-using Mvc3Demo3.Models.Util;
+using MVC3Bzm.Models.Util;
 using System.Configuration;
 using MVC3Bzm.Models.Util;
 

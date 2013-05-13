@@ -1,12 +1,13 @@
-﻿
+﻿@using MVC3Bzm.Models.Entity;
+
 @{
-    Mvc3Demo3.Models.Entity.Articles art = ViewData["Article"] as Mvc3Demo3.Models.Entity.Articles;
+    Articles art = ViewData["Article"] as Articles;
 }
     <!--内容-->
     <div class='post_list'>
         <div class='post_title' id="Div_Title">@art.Title</div>
         <div class='post_content' id="Div_Content">@Html.Raw(@art.Content)</div>
-        <div class='post_info' id="Div_Info">@art.Date&nbsp;&nbsp;@art.TagName&nbsp;&nbsp;@art.Access&nbsp&nbsp;@art.AdminName&nbsp&nbsp;<a href="../Tags" target="_blank">Tag</a>&nbsp;&nbsp;&nbsp;&nbsp;留言請按q</div>
+        <div class='post_info' id="Div_Info">@art.Date&nbsp;&nbsp;@art.TagName&nbsp;&nbsp;@art.Access&nbsp&nbsp;@Html.ActionLink(art.AdminName, "About", "", new { target = "_blank" })&nbsp;&nbsp;@Html.ActionLink("Tags", "Tags", "", new { target = "_blank" })&nbsp;&nbsp;留言請按q</div>
         <input type="hidden" id="Hid_Title" value="@art.ID" />
     </div>
     
@@ -35,9 +36,9 @@
 
     <!--评论内容-->
     @{
-        List<MVC3Bzm.Models.Entity.Comments> coms = ViewData["Comments"] as List<MVC3Bzm.Models.Entity.Comments>;
+        List<Comments> coms = ViewData["Comments"] as List<Comments>;
 
-        foreach (MVC3Bzm.Models.Entity.Comments com in coms)
+        foreach (Comments com in coms)
         { 
             <div class='reply_list'>
                 <table width='580' height='auto' border='0' align='center'>

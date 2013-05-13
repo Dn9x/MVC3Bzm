@@ -4,8 +4,8 @@ using System.Linq;
 using System.Web;
 using System.Web.Mvc;
 using MVC3Bzm.Models.Entity;
-using Mvc3Demo3.Models;
-using Mvc3Demo3.Models.InterFaces;
+using MVC3Bzm.Models;
+using MVC3Bzm.Models.InterFaces;
 using System.Text.RegularExpressions;
 
 namespace MVC3Bzm.Controllers.Filters

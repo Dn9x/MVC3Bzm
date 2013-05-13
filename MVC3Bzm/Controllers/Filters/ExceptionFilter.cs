@@ -6,7 +6,7 @@ using System.Web.Mvc;
 using System.Text;
 using System.Collections.Specialized;
 using MVC3Bzm.Models.InterFaces;
-using Mvc3Demo3.Models;
+using MVC3Bzm.Models;
 using MVC3Bzm.Models.Entity;
 
 namespace MVC3Bzm.Controllers.Filters

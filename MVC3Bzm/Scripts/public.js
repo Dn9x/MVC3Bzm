@@ -102,37 +102,6 @@ function isIE7() {
     }
 }
 
-//设置cookie
-function SetCookie() {
-    //判断是否有cookie
-    if (document.cookie.length > 0) {
-        //判断是否有这个cookie
-        var cs = document.cookie.indexOf("pagesc=");
-
-        //如果有
-        if (cs != -1) {
-            //起始索引
-            var start = cs + "pagesc".length + 1;
-
-            //结束索引
-            var end = document.cookie.indexOf(";", cs);
-
-            //判断是否正确
-            if (end == -1) {
-                end = document.cookie.length;
-            }
-
-            cs = unescape(document.cookie.substring(start, end));
-        }
-
-        $("#pages").removeClass().addClass("pages" + cs);
-    } else {    //第一次打开
-        //设置cookie
-        document.cookie = "pagesc=" + escape("1");
-
-        $("#pages").removeClass().addClass("pages1");
-    }
-}
 
 //監控鍵盤
 $(document).keypress(function (e) {

@@ -7,9 +7,9 @@ using System.Configuration;
 using MVC3Bzm.Models.Entity;
 using MySql.Data.MySqlClient;
 using Tree.MvcTree.Models;
-using Mvc3Demo3.Models.InterFaces;
-using Mvc3Demo3.Models;
-using Mvc3Demo3.Models.Entity;
+using MVC3Bzm.Models.InterFaces;
+using MVC3Bzm.Models;
+using MVC3Bzm.Models.Entity;
 
 namespace MVC3Bzm.Models.Services
 {

@@ -1,19 +1,19 @@
-﻿using Mvc3Demo3.Models;
-using Mvc3Demo3.Models.InterFaces;
+﻿using MVC3Bzm.Models;
+using MVC3Bzm.Models.InterFaces;
 using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Web;
 using System.Web.Mvc;
 using MVC3Bzm.Models.Util;
-using Mvc3Demo3.Models.Entity;
+using MVC3Bzm.Models.Entity;
 using System.Data;
 using MVC3Bzm.Models.InterFaces;
 using MVC3Bzm.Models.Entity;
 using MVC3Bzm.Controllers.Filters;
 using Tree.MvcTree.Models;
 
-namespace Mvc3Demo3.Controllers
+namespace MVC3Bzm.Controllers
 {
     public class HomeController : Controller
     {

@@ -9,7 +9,7 @@ using MVC3Bzm.Models.Entity;
 using MVC3Bzm.Models.Util;
 using MVC3Bzm.Controllers.Filters;
 using System.Security.Cryptography;
-using Mvc3Demo3.Models.Entity;
+using MVC3Bzm.Models.Entity;
 
 namespace MVC3Bzm.Controllers
 {

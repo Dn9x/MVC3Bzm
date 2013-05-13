@@ -38,7 +38,7 @@
     </Reference>
     <Reference Include="LitJSON, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
-      <HintPath>Content\Editor\asp.net\bin\LitJSON.dll</HintPath>
+      <HintPath>bin\LitJSON.dll</HintPath>
     </Reference>
     <Reference Include="Microsoft.CSharp">
       <Private>True</Private>

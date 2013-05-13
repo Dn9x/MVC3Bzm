@@ -1,5 +1,5 @@
-﻿using Mvc3Demo3.Models.InterFaces;
-using Mvc3Demo3.Models.Services;
+﻿using MVC3Bzm.Models.InterFaces;
+using MVC3Bzm.Models.Services;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -7,7 +7,7 @@ using System.Web;
 using MVC3Bzm.Models.InterFaces;
 using MVC3Bzm.Models.Services;
 
-namespace Mvc3Demo3.Models
+namespace MVC3Bzm.Models
 {
     /// <summary>
     /// 服务组件，创建业务服务组件

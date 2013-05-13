@@ -1,11 +1,11 @@
-﻿using Mvc3Demo3.Models.Entity;
+﻿using MVC3Bzm.Models.Entity;
 using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Web;
 using System.Data;
 
-namespace Mvc3Demo3.Models.InterFaces
+namespace MVC3Bzm.Models.InterFaces
 {
     public interface IArticle
     {

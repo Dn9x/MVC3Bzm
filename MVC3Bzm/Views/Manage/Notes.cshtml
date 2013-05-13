@@ -1,4 +1,6 @@
-﻿@{
+﻿@using MVC3Bzm.Models.Entity;
+
+@{
     ViewBag.Title = "Notes";
     Layout = null;  
 }
@@ -15,9 +17,9 @@
           <td align="center" bgcolor="#33FFFF">時間</td>
         </tr>
         @{
-            List<MVC3Bzm.Models.Entity.Access> list = ViewBag.Notes as List<MVC3Bzm.Models.Entity.Access>;
+            List<Access> list = ViewBag.Notes as List<Access>;
 
-            foreach (MVC3Bzm.Models.Entity.Access accs in list)
+            foreach (Access accs in list)
             {
                 <tr>
                   <td align='center' bgcolor='#EEEEEE'>@accs.ID</td>

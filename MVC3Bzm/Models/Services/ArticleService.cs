@@ -1,16 +1,16 @@
-﻿using Mvc3Demo3.Models.InterFaces;
-using Mvc3Demo3.Models.Entity;
+﻿using MVC3Bzm.Models.InterFaces;
+using MVC3Bzm.Models.Entity;
 using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Web;
 using MySql.Data.MySqlClient;
 using System.Data;
-using Mvc3Demo3.Models.Util;
+using MVC3Bzm.Models.Util;
 using System.Configuration;
 using MVC3Bzm.Models.Util;
 
-namespace Mvc3Demo3.Models.Services
+namespace MVC3Bzm.Models.Services
 {
     public class ArticleService : IArticle
     {

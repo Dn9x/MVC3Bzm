@@ -5,7 +5,7 @@ using System.Data;
 using System.Linq;
 using System.Web;
 
-namespace Mvc3Demo3.Models.Util
+namespace MVC3Bzm.Models.Util
 {
     public class MySqlUtil
     {
