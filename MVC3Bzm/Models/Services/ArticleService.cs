@@ -60,7 +60,7 @@ namespace MVC3Bzm.Models.Services
                 arts.ID = dr.GetInt32(0);
                 arts.Title = dr.GetString(1);
                 arts.Content = dr.GetString(2);
-                arts.Date = dr.GetDateTime(3);
+                arts.Date = dr.GetDateTime(3)+"";
                 arts.Access = dr.GetInt32(4);
                 arts.TagName = dr.GetString(5);
                 arts.TagId = dr.GetInt32(6);
@@ -99,7 +99,7 @@ namespace MVC3Bzm.Models.Services
                 arts.ID = dr.GetInt32(0);
                 arts.Title = dr.GetString(1);
                 arts.Content = dr.GetString(2);
-                arts.Date = dr.GetDateTime(3);
+                arts.Date = dr.GetDateTime(3)+"";
                 arts.Access = dr.GetInt32(4);
                 arts.TagName = dr.GetString(5);
                 arts.TagId = dr.GetInt32(6);
@@ -150,7 +150,7 @@ namespace MVC3Bzm.Models.Services
 
                 arts.ID = dr.GetInt32(0);
                 arts.Title = dr.GetString(1);
-                arts.Date = dr.GetDateTime(2);
+                arts.Date = dr.GetDateTime(2)+"";
                 arts.TagId = dr.GetInt32(3);
 
                 list.Add(arts);

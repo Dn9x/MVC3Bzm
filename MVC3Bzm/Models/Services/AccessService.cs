@@ -33,7 +33,7 @@ namespace MVC3Bzm.Models.Services
 
             conn.Open();
 
-            string sql = String.Format("select id, acc_url as url, acc_ip as ip, acc_dns as dns, acc_browser as browser, acc_date as date from bzm_access limit {0}, {1}", minPage, maxPage);
+            string sql = String.Format("select id, acc_url as url, acc_ip as ip, acc_dns as dns, acc_browser as browser, acc_date as date from bzm_access order by date desc limit {0}, {1}", minPage, maxPage);
 
             MySqlCommand cmd = new MySqlCommand(sql, conn);
 

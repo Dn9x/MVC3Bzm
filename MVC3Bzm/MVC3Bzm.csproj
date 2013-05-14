@@ -381,7 +381,6 @@
     <Content Include="Global.asax" />
     <Content Include="Scripts\head.min.js" />
     <Content Include="Scripts\jquery-1.4.2.min.js" />
-    <Content Include="Scripts\jquery.cookie.js" />
     <Content Include="Scripts\public.js" />
     <Content Include="Scripts\template.js" />
     <Content Include="Web.config">

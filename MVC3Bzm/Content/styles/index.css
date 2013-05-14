@@ -5,6 +5,11 @@
 	/*font-family:Arial,Tahoma,Verdana;*/font-family:'Comic Sans MS',cursive;
 }
 
+::selection {
+  color: #0088dd;
+  background: #dcdcdc;
+}
+
 #header
 {
     left:0px;
@@ -199,7 +204,7 @@
 	border:0px solid #CCCCCC;
 	/*font-family:Arial,Tahoma,Verdana;*/font-family:'Comic Sans MS',cursive;
 	padding:10px 10px;
-	color:#333;
+	color:#FFFFFF;
 	text-align:left;
 	font-size:12px;
 }

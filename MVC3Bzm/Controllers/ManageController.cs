@@ -9,7 +9,7 @@ using MVC3Bzm.Models.Entity;
 using MVC3Bzm.Models.Util;
 using MVC3Bzm.Controllers.Filters;
 using System.Security.Cryptography;
-using MVC3Bzm.Models.Entity;
+using MVC3Bzm.Models;
 
 namespace MVC3Bzm.Controllers
 {
@@ -128,9 +128,13 @@ namespace MVC3Bzm.Controllers
             {
                 Title = HttpUtility.HtmlEncode(Request.Form["Title"]),
                 TagId = Convert.ToInt32(HttpUtility.HtmlEncode(Request.Form["Tag"])),
-                Content = HttpUtility.HtmlEncode(Request.Form["content"]),
+                Content = Request.Form["content"],
                 AdminId = admin.ID
             };
+
+            IArticle ia = ServiceBuilder.BuildArticleService();
+
+            ia.InsertArticle(article);
 
             return RedirectToAction("Post", "Manage");
         }

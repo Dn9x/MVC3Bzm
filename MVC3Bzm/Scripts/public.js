@@ -4,10 +4,6 @@
         $("#page").css("position", "absolute");
     }
 
-    SetCookie();
-
-    TagList('EM');
-
     //下一頁
     $("#next_p").click(function () {
         var page = $("#Hid_Page").val();

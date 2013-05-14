@@ -28,8 +28,9 @@
     <div class='post_title'>
         <a href='/Home/Detail/<%= list[0][i].ID %>' target='_blank' class='detail_a'><%= list[0][i].Title %></a></div>
     <div class='post_content'><%== list[0][i].Content %></div>
-    <div class='post_info'><%= list[0][i].Date %>&nbsp;&nbsp;<a class='auth_a' href='#'><%= list[0][i].TagName %></a>
-    &nbsp&nbsp<a href='#' target='_blank' class='auth_a'><%= list[0][i].TagName %></a>
-    &nbsp&nbsp<a href='#' target='_blank' class='auth_a'>Tags</a></div></div>
+    <div class='post_info'><%= list[0][i].Date %>&nbsp;&nbsp;<%= list[0][i].TagName %>
+    &nbsp&nbsp<%= list[0][i].Access %>
+    &nbsp&nbsp<a href='Home/About' target='_blank' class='auth_a'><%= list[0][i].AdminName %></a>
+    &nbsp&nbsp<a href='Home/Tags' target='_blank' class='auth_a'>Tags</a></div></div>
 <% } %>
 </script>

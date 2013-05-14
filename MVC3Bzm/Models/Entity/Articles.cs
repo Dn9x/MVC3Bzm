@@ -4,7 +4,7 @@ using System.Linq;
 using System.Web;
 using System.Web.Mvc;
 
-namespace Mvc3Demo3.Models.Entity
+namespace MVC3Bzm.Models.Entity
 {
     public class Articles
     {
@@ -26,7 +26,7 @@ namespace Mvc3Demo3.Models.Entity
         /// <summary>
         /// 发布时间
         /// </summary>
-        public DateTime Date { get; set; }
+        public string Date { get; set; }
 
         /// <summary>
         /// 标签ID
