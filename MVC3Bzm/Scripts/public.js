@@ -3,7 +3,7 @@
     if (isIE6() || isIE7()) {
         $("#page").css("position", "absolute");
     }
-    
+
     //改变图标颜色
     ChangeBrowser();
 
@@ -91,6 +91,19 @@
     }).click(function () {
         //跳转到锚记
         window.location.href = "#top";
+    });
+
+    //评论
+    $("#SpanPost").click(function () {
+        //得到層的狀態
+        var vis1 = $("#Div_Reply").css("display");
+
+        //判斷
+        if (vis1 == "block") {
+            $("#Div_Reply").css("display", "none");
+        } else if (vis1 == "none") {
+            $("#Div_Reply").css("display", "block");
+        }
     });
 
 });

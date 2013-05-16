@@ -27,7 +27,7 @@ Instead of a list of all class selectors,
 you can use the generic selector below, but it's slower:
 [class*="icon-"] {
 */
-.icon-happy, .icon-happy-2, .icon-smiley, .icon-smiley-2, .icon-tongue, .icon-tongue-2, .icon-sad, .icon-sad-2, .icon-wink, .icon-wink-2, .icon-grin, .icon-grin-2, .icon-cool, .icon-cool-2, .icon-angry, .icon-angry-2, .icon-evil, .icon-evil-2, .icon-shocked, .icon-shocked-2, .icon-confused, .icon-confused-2, .icon-neutral, .icon-neutral-2, .icon-wondering, .icon-wondering-2, .icon-chrome, .icon-firefox, .icon-opera, .icon-safari, .icon-feed, .icon-IE {
+.icon-home, .icon-feed, .icon-chrome, .icon-firefox, .icon-IE, .icon-opera, .icon-safari, .icon-happy, .icon-happy-2, .icon-smiley, .icon-smiley-2, .icon-tongue, .icon-tongue-2, .icon-sad, .icon-sad-2, .icon-wink, .icon-wink-2, .icon-grin, .icon-grin-2, .icon-cool, .icon-cool-2, .icon-angry, .icon-shocked, .icon-shocked-2, .icon-confused, .icon-confused-2, .icon-neutral, .icon-neutral-2, .icon-wondering, .icon-wondering-2, .icon-angry-2, .icon-console {
 	font-family: 'icomoon';
 	speak: none;
 	font-style: normal;
@@ -38,99 +38,99 @@ you can use the generic selector below, but it's slower:
 	-webkit-font-smoothing: antialiased;
 	font-size: 1em;
 }
-.icon-happy:before {
+.icon-home:before {
 	content: "\61";
 }
-.icon-happy-2:before {
+.icon-feed:before {
 	content: "\62";
 }
-.icon-smiley:before {
+.icon-chrome:before {
 	content: "\63";
 }
-.icon-smiley-2:before {
+.icon-firefox:before {
 	content: "\64";
 }
-.icon-tongue:before {
+.icon-IE:before {
 	content: "\65";
 }
-.icon-tongue-2:before {
+.icon-opera:before {
 	content: "\66";
 }
-.icon-sad:before {
+.icon-safari:before {
 	content: "\67";
 }
-.icon-sad-2:before {
+.icon-happy:before {
 	content: "\68";
 }
-.icon-wink:before {
+.icon-happy-2:before {
 	content: "\69";
 }
-.icon-wink-2:before {
+.icon-smiley:before {
 	content: "\6a";
 }
-.icon-grin:before {
+.icon-smiley-2:before {
 	content: "\6b";
 }
-.icon-grin-2:before {
+.icon-tongue:before {
 	content: "\6c";
 }
-.icon-cool:before {
+.icon-tongue-2:before {
 	content: "\6d";
 }
-.icon-cool-2:before {
+.icon-sad:before {
 	content: "\6e";
 }
-.icon-angry:before {
+.icon-sad-2:before {
 	content: "\6f";
 }
-.icon-angry-2:before {
+.icon-wink:before {
 	content: "\70";
 }
-.icon-evil:before {
+.icon-wink-2:before {
 	content: "\71";
 }
-.icon-evil-2:before {
+.icon-grin:before {
 	content: "\72";
 }
-.icon-shocked:before {
+.icon-grin-2:before {
 	content: "\73";
 }
-.icon-shocked-2:before {
+.icon-cool:before {
 	content: "\74";
 }
-.icon-confused:before {
+.icon-cool-2:before {
 	content: "\75";
 }
-.icon-confused-2:before {
+.icon-angry:before {
 	content: "\76";
 }
-.icon-neutral:before {
+.icon-shocked:before {
 	content: "\77";
 }
-.icon-neutral-2:before {
+.icon-shocked-2:before {
 	content: "\78";
 }
-.icon-wondering:before {
+.icon-confused:before {
 	content: "\79";
 }
-.icon-wondering-2:before {
+.icon-confused-2:before {
 	content: "\7a";
 }
-.icon-chrome:before {
-	content: "\2b";
+.icon-neutral:before {
+	content: "\31";
 }
-.icon-firefox:before {
-	content: "\2d";
+.icon-neutral-2:before {
+	content: "\32";
 }
-.icon-opera:before {
-	content: "\2a";
+.icon-wondering:before {
+	content: "\33";
 }
-.icon-safari:before {
-	content: "\2f";
+.icon-wondering-2:before {
+	content: "\34";
 }
-.icon-feed:before {
-	content: "\26";
+.icon-angry-2:before {
+	content: "\35";
 }
-.icon-IE:before {
-	content: "\5e";
+.icon-console:before {
+	content: "\36";
 }

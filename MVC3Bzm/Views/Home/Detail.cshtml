@@ -8,13 +8,14 @@
         <div class='post_title' id="Div_Title">@art.Title</div>
         <div class='post_content' id="Div_Content">@Html.Raw(@art.Content)</div>
         <div class='post_info' id="Div_Info">
-            @art.Date&nbsp;&nbsp;@art.TagName&nbsp;&nbsp;@art.Access&nbsp&nbsp;@art.AdminName&nbsp&nbsp;<a href="../Tags" target="_blank">Tag</a>&nbsp;&nbsp;推荐使用：
+            @art.Date&nbsp;&nbsp;@art.TagName&nbsp;&nbsp;@art.Access&nbsp&nbsp;@Html.ActionLink(art.AdminName, "About", "", new { target = "_blank" })&nbsp;&nbsp;@Html.ActionLink("Tags", "Tags", "", new { target = "_blank" })&nbsp;&nbsp;推荐使用：
             <span aria-hidden="true" title="Chrome" class="icon-chrome"></span>
 		    <span aria-hidden="true" title="Firefox" class="icon-firefox"></span>
 		    <span aria-hidden="true" title="Opera" class="icon-opera"></span>
 		    <span aria-hidden="true" title="Safari" class="icon-safari"></span>
 		    <span aria-hidden="true" title="IE9+" class="icon-IE"></span>
-		    @*<span aria-hidden="true" class="icon-feed"></span>*@&nbsp;&nbsp;留言請按q
+		    @*<span aria-hidden="true" class="icon-feed"></span>
+            <span aria-hidden="true" class="icon-home"></span>*@&nbsp;&nbsp;留言請按q或<span id="SpanPost" style="text-decoration:underline; cursor:pointer;">点此</span>
         </div>
         <input type="hidden" id="Hid_Title" value="@art.ID" />
     </div>
@@ -45,9 +46,6 @@
 		                <span aria-hidden="true" class="icon-cool"></span>
 		                <span aria-hidden="true" class="icon-cool-2"></span>
 		                <span aria-hidden="true" class="icon-angry"></span>
-		                <span aria-hidden="true" class="icon-angry-2"></span>
-		                <span aria-hidden="true" class="icon-evil"></span>
-		                <span aria-hidden="true" class="icon-evil-2"></span>
 		                <span aria-hidden="true" class="icon-shocked"></span>
 		                <span aria-hidden="true" class="icon-shocked-2"></span>
 		                <span aria-hidden="true" class="icon-confused"></span>
@@ -56,6 +54,7 @@
 		                <span aria-hidden="true" class="icon-neutral-2"></span>
 		                <span aria-hidden="true" class="icon-wondering"></span>
 		                <span aria-hidden="true" class="icon-wondering-2"></span>
+		                <span aria-hidden="true" class="icon-angry-2"></span>
                     </td>
        	        </tr>
                 <tr>

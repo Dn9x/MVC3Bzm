@@ -361,6 +361,8 @@
     <Content Include="Content\Editor\themes\qq\editor.gif" />
     <Content Include="Content\Editor\themes\qq\qq.css" />
     <Content Include="Content\Editor\themes\simple\simple.css" />
+    <Content Include="Content\fonts\icomoon.dev.svg" />
+    <Content Include="Content\fonts\icomoon.svg" />
     <Content Include="Content\images\back.bmp" />
     <Content Include="Content\images\bck5.png" />
     <Content Include="Content\images\bg_main.jpg" />
@@ -434,9 +436,7 @@
     <Content Include="Content\Editor\asp.net\upload_json.ashx" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="Content\fonts\icomoon.dev.svg" />
     <None Include="Content\fonts\icomoon.eot" />
-    <None Include="Content\fonts\icomoon.svg" />
     <None Include="Content\fonts\icomoon.ttf" />
     <None Include="Content\fonts\icomoon.woff" />
   </ItemGroup>
