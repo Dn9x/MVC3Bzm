@@ -376,6 +376,7 @@
     <Content Include="Content\images\search_32.png" />
     <Content Include="Content\images\up_32.png" />
     <Content Include="Content\images\up_48.png" />
+    <Content Include="Content\styles\font.css" />
     <Content Include="Content\styles\index.css" />
     <Content Include="Content\styles\login.css" />
     <Content Include="Global.asax" />
@@ -431,6 +432,13 @@
   <ItemGroup>
     <Content Include="Content\Editor\asp.net\file_manager_json.ashx" />
     <Content Include="Content\Editor\asp.net\upload_json.ashx" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Content\fonts\icomoon.dev.svg" />
+    <None Include="Content\fonts\icomoon.eot" />
+    <None Include="Content\fonts\icomoon.svg" />
+    <None Include="Content\fonts\icomoon.ttf" />
+    <None Include="Content\fonts\icomoon.woff" />
   </ItemGroup>
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
   <Import Project="$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v10.0\WebApplications\Microsoft.WebApplication.targets" />

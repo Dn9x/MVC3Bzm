@@ -79,22 +79,27 @@ namespace MVC3Bzm.Controllers
         [ExceptionFilter()]
         public ActionResult Comments(string title, string name, string content)
         {
-            Comments comment = new Comments
+            string result = "";
+
+            if (name.Length > 0 && content.Length > 0)
             {
-                ArticleId = Convert.ToInt32(HttpUtility.HtmlEncode(title)),
-                User = HttpUtility.HtmlEncode(name),
-                Content = HttpUtility.HtmlEncode(content),
-            };
+                Comments comment = new Comments
+                {
+                    ArticleId = Convert.ToInt32(HttpUtility.HtmlEncode(title)),
+                    User = HttpUtility.HtmlEncode(name),
+                    Content = HttpUtility.HtmlEncode(content),
+                };
 
-            IComment iComm = ServiceBuilder.BuildCommentService();
+                IComment iComm = ServiceBuilder.BuildCommentService();
 
-            //得到结果
-            string result = iComm.InsertComment(comment);
+                //得到结果
+                result = iComm.InsertComment(comment);
 
-            //得到评论列表
-            List<Comments> list = iComm.SelectCommentsByArticleId(title);
+                //得到评论列表
+                List<Comments> list = iComm.SelectCommentsByArticleId(title);
 
-            result = JsonUtil.ListToJson1(list);
+                result = JsonUtil.ListToJson1(list);
+            }
 
             return Content(result);
         }

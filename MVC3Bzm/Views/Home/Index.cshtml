@@ -12,7 +12,15 @@
         <div class='post_list'>
             <div class='post_title'>@Html.ActionLink(art.Title, "Detail", new { id = art.ID }, new { target = "_blank" })</div>
             <div class='post_content'>@Html.Raw(@art.Content)</div>
-            <div class='post_info'>@art.Date&nbsp;&nbsp;@art.TagName&nbsp;&nbsp;@art.Access&nbsp&nbsp;@Html.ActionLink(art.AdminName, "About", "", new { target = "_blank" })&nbsp;&nbsp;@Html.ActionLink("Tags", "Tags", "", new { target = "_blank" })</div>
+            <div class='post_info'>
+                @art.Date&nbsp;&nbsp;@art.TagName&nbsp;&nbsp;@art.Access&nbsp&nbsp;@Html.ActionLink(art.AdminName, "About", "", new { target = "_blank" })&nbsp;&nbsp;@Html.ActionLink("Tags", "Tags", "", new { target = "_blank" })&nbsp;&nbsp;推荐使用：
+		        <span aria-hidden="true" title="Chrome" class="icon-chrome"></span>
+		        <span aria-hidden="true" title="Firefox" class="icon-firefox"></span>
+		        <span aria-hidden="true" title="Opera" class="icon-opera"></span>
+		        <span aria-hidden="true" title="Safari" class="icon-safari"></span>
+		        <span aria-hidden="true" title="IE9+" class="icon-IE"></span>
+		        @*<span aria-hidden="true" class="icon-feed"></span>*@
+            </div>
         </div>
     }
     
@@ -26,7 +34,7 @@
 <% for (var i = 0; i < count; i ++) { %>
     <div class='post_list'>
     <div class='post_title'>
-        <a href='/Home/Detail/<%= list[0][i].ID %>' target='_blank' class='detail_a'><%= list[0][i].Title %></a></div>
+        <a href='Home/Detail/<%= list[0][i].ID %>' target='_blank' class='detail_a'><%= list[0][i].Title %></a></div>
     <div class='post_content'><%== list[0][i].Content %></div>
     <div class='post_info'><%= list[0][i].Date %>&nbsp;&nbsp;<%= list[0][i].TagName %>
     &nbsp&nbsp<%= list[0][i].Access %>

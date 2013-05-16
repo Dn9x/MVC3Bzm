@@ -3,6 +3,9 @@
     if (isIE6() || isIE7()) {
         $("#page").css("position", "absolute");
     }
+    
+    //改变图标颜色
+    ChangeBrowser();
 
     //下一頁
     $("#next_p").click(function () {
@@ -40,21 +43,26 @@
         if (name != null && content != null) {
             //加載初始
             $.getJSON(
-                "/Home/Comments",
-                { "title": title, "name": name, "content": content },
-                function (json, status) {
-                    if (status = "success") {
-                        var list = "";
+            "/Home/Comments",
+            { "title": title, "name": name, "content": content },
+            function (json, status) {
+                if (status = "success") {
+                    var list = "";
 
+                    if (json == null || json.length == 0) {
+                        $("#Txt_Content").val("别开玩笑了对我.....");
+
+                        $("#Btn_Post").removeAttr("disabled");
+                    } else {
                         $.each(json, function (i, item) {
                             list += "<div class='reply_list'><table width='580' height='auto' border='0' align='center'>" +
-                            "<tr><td style='width:72px;' rowspan='2' align='center' valign='top'>" +
-                            "<img src='../../Content/images/head.jpg' width='50' height='50' alt='" + item.User + "' title='" + item.User + "' /></td>" +
-                            "<td align='left' style='width:498px; font-size:11px; color:#555;'>" + item.User + "&nbsp;&nbsp;" + item.Date + "</td>" +
-                            "</tr><tr>" +
-                            "<td align='left'>" +
-                            "<div style='width:100%; font-size:12px; color:#555; height:auto; word-wrap:break-word; word-break:break-all;'>" + item.Content + "</div></td>" +
-                            "</tr></table></div>";
+                        "<tr><td style='width:72px;' rowspan='2' align='center' valign='top'>" +
+                        "<img src='../../Content/images/head.jpg' width='50' height='50' alt='" + item.User + "' title='" + item.User + "' /></td>" +
+                        "<td align='left' style='width:498px; font-size:11px; color:#555;'>" + item.User + "&nbsp;&nbsp;" + item.Date + "</td>" +
+                        "</tr><tr>" +
+                        "<td align='left'>" +
+                        "<div style='width:100%; font-size:12px; color:#555; height:auto; word-wrap:break-word; word-break:break-all;'>" + item.Content + "</div></td>" +
+                        "</tr></table></div>";
                         });
 
                         $(".reply_list").remove();
@@ -65,14 +73,19 @@
                         $("#Div_Reply").after(list);
                     }
                 }
-            );
+            }
+        );
         }
+    }).mouseover(function () {
+        $(this).css("background", "#DFDFDF");
+    }).mouseout(function () {
+        $(this).css("background", "#e6e6e6");
     });
 
 
     //返回顶部的js方法
     $("#foots").hover(function () {
-        $(this).html("").html("顶部").css({ "border": "1px solid #CCC", "border-radius": "3px" });
+        $(this).html("").html("顶部").css({ "border": "1px dashed #CCC", "border-radius": "3px" });
     }, function () {
         $(this).html("").html("<img src='../../Content/images/up_48.png' width='48px' height='48px' />").css("border", "0px");
     }).click(function () {
@@ -81,6 +94,28 @@
     });
 
 });
+
+function ChangeBrowser() {
+    var browserName = navigator.userAgent.toLowerCase();
+    if (/msie/i.test(browserName) && !/opera/.test(browserName)) {
+        $(".icon-IE").css("color", "red");
+        return;
+    } else if (/firefox/i.test(browserName)) {
+        $(".icon-firefox").css("color", "red");
+        return;
+    } else if (/chrome/i.test(browserName) && /webkit/i.test(browserName) && /mozilla/i.test(browserName)) {
+        $(".icon-chrome").css("color", "red");
+        return;
+    } else if (/opera/i.test(browserName)) {
+        $(".icon-opera").css("color", "red");
+        return;
+    } else if (/webkit/i.test(browserName) && !(/chrome/i.test(browserName) && /webkit/i.test(browserName) && /mozilla/i.test(browserName))) {
+        $(".icon-safari").css("color", "red");
+        return;
+    } else {
+        return;
+    }
+}
 
 /*判斷各個瀏覽器*/
 function isIE6() {
