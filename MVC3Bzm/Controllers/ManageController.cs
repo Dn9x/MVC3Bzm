@@ -48,7 +48,7 @@ namespace MVC3Bzm.Controllers
             }
             else
             {
-                IAdmin iad = new AdminService();
+                IBzm iBzm = new BzmService();
 
                 //把密码转为md5
                 byte[] result = System.Text.Encoding.Default.GetBytes(InputUtil.ReplaceInput(pswd));
@@ -56,7 +56,7 @@ namespace MVC3Bzm.Controllers
                 byte[] output = md5.ComputeHash(result);
                 pswd = BitConverter.ToString(output).Replace("-", "");
 
-                Admins admin = iad.GetAdminByNameAndPswd(InputUtil.ReplaceInput(name), pswd);
+                Admins admin = iBzm.GetAdminByNameAndPswd(InputUtil.ReplaceInput(name), pswd);
                 
                 if (admin != null)
                 {
@@ -82,18 +82,31 @@ namespace MVC3Bzm.Controllers
         [ExceptionFilter()]
         public ActionResult Notes()
         {
-            IAccess iac = new AccessService();
+            IBzm iBzm = new BzmService();
 
-            List<Access> list = iac.SelectListAccess(0, 50);
+            using (Bzm bzm = iBzm.BuildBzm())
+            {
+                //不使用延迟加载
+                bzm.DeferredLoadingEnabled = false;
 
-            ViewBag.Notes = list;
+                var acces = (from a in bzm.BZMAccess orderby a.AcCDate descending select a).Skip(0).Take(70);
+
+                List<BZMAccess> list = new List<BZMAccess>();
+
+                foreach (BZMAccess a in acces)
+                {
+                    list.Add(a);
+                }
+
+                ViewBag.List = list;
+            }
 
             return View();
         }
 
 
         /// <summary>
-        /// 发表文章
+        /// 发表文章页面
         /// </summary>
         /// <returns></returns>
         [AuthFilter()]
@@ -101,12 +114,24 @@ namespace MVC3Bzm.Controllers
         [ExceptionFilter()]
         public ActionResult Post()
         {
-            ITag it = new TagService();
+            IBzm iBzm = new BzmService();
 
-            //查询所有标签
-            List<Tags> list = it.SelectTagList();
+            using (Bzm bzm = iBzm.BuildBzm())
+            {
+                //不使用延迟加载
+                bzm.DeferredLoadingEnabled = false;
 
-            ViewBag.Tag = list;
+                var tags = from t in bzm.BZMTag orderby t.ID descending select t;
+
+                List<BZMTag> list = new List<BZMTag>();
+
+                foreach (BZMTag t in tags)
+                {
+                    list.Add(t);
+                }
+
+                ViewBag.List = list;
+            }
 
             return View();
         }
@@ -122,19 +147,28 @@ namespace MVC3Bzm.Controllers
         [ValidateInput(false)]
         public ActionResult Posts()
         {
-            Admins admin = (Admins)Session["usersd"];
+            IBzm iBzm = new BzmService();
 
-            var article = new Articles() 
+            using (Bzm bzm = iBzm.BuildBzm())
             {
-                Title = HttpUtility.HtmlEncode(Request.Form["Title"]),
-                TagId = Convert.ToInt32(HttpUtility.HtmlEncode(Request.Form["Tag"])),
-                Content = Request.Form["content"],
-                AdminId = admin.ID
-            };
+                //赋值
+                Admins admin = (Admins)Session["usersd"];
 
-            IArticle ia = ServiceBuilder.BuildArticleService();
+                var article = new BZMArticle
+                {
+                    ArticleTitle = HttpUtility.HtmlEncode(Request.Form["Title"]),
+                    ArticleTagID = Convert.ToInt32(HttpUtility.HtmlEncode(Request.Form["Tag"])),
+                    ArticleContent = Request.Form["content"],
+                    ArticleAdminID = admin.ID,
+                    ArticleDate = DateTime.Now,
+                };
 
-            ia.InsertArticle(article);
+                //添加
+                bzm.BZMArticle.InsertOnSubmit(article);
+
+                //提交
+                bzm.SubmitChanges();
+            }
 
             return RedirectToAction("Post", "Manage");
         }

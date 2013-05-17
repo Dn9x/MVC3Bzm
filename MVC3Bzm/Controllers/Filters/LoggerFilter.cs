@@ -7,6 +7,7 @@ using MVC3Bzm.Models.Entity;
 using MVC3Bzm.Models;
 using MVC3Bzm.Models.InterFaces;
 using System.Text.RegularExpressions;
+using MVC3Bzm.Models.Services;
 
 namespace MVC3Bzm.Controllers.Filters
 {
@@ -28,6 +29,8 @@ namespace MVC3Bzm.Controllers.Filters
             //获取controll名称
             string contro = filterContext.ActionDescriptor.ControllerDescriptor.ControllerName;
 
+            IBzm iBzm = new BzmService();
+
             //判断是否是访问文章详情
             if (contro == "Home" && action == "Detail")
             {
@@ -42,29 +45,42 @@ namespace MVC3Bzm.Controllers.Filters
 
                 if(r.Match(parms).Success)
                 {
-                    //创建对象
-                    IArticle iArt = ServiceBuilder.BuildArticleService();
+                    using (Bzm bzm = iBzm.BuildBzm())
+                    {
+                        int id = Convert.ToInt32(parms);
 
-                    iArt.UpdateAccess(parms);
+                        var art = bzm.BZMArticle.SingleOrDefault<BZMArticle>(a => a.ID == id);
+
+                        //修改文章的属性
+                        art.ArticleAccess = art.ArticleAccess + 1;
+                        art.ArticleDate = art.ArticleDate;
+
+                        bzm.SubmitChanges();
+                    }
                 }
             }
 
             //浏览器
             string brow = brow1 + brow2 + " " + brow3;
 
-            Access access = new Access()
+            using (Bzm bzm = iBzm.BuildBzm())
             {
-                Url = filterContext.HttpContext.Request.Url.AbsoluteUri,       //用户请求的URL
-                Ip = filterContext.HttpContext.Request.UserHostAddress,        //用户的IP
-                Dns = filterContext.HttpContext.Request.UserHostName,          //用户的DNS
-                Browser = brow      //用户的浏览器信息
-            };
+                //赋值
+                var acces = new BZMAccess()
+                {
+                    AcCURL = filterContext.HttpContext.Request.Url.AbsoluteUri,       //用户请求的URL
+                    AcCIP = filterContext.HttpContext.Request.UserHostAddress,        //用户的IP
+                    AcCDNS = filterContext.HttpContext.Request.UserHostName,          //用户的DNS
+                    AcCBrowser = brow,      //用户的浏览器信息
+                    AcCDate = DateTime.Now,
+                };
 
-            //创建服务
-            var acSer = ServiceBuilder.BuildAccessService();
+                //添加
+                bzm.BZMAccess.InsertOnSubmit(acces);
 
-            //添加访问信息
-            acSer.InsertAccess(access);
+                //提交
+                bzm.SubmitChanges();
+            }
         }
 
         /// <summary>

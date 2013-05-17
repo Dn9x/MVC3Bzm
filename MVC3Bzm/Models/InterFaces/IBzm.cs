@@ -7,30 +7,28 @@ using Tree.MvcTree.Models;
 
 namespace MVC3Bzm.Models.InterFaces
 {
-    public interface ITag
+    public interface IBzm
     {
 
         /// <summary>
-        /// 添加一个Tag
+        /// 创建实例类
         /// </summary>
-        /// <param name="tags"></param>
         /// <returns></returns>
-        int InsertTags(Tags tags);
-
+        Bzm BuildBzm();
 
         /// <summary>
-        /// 查询Tag集合
+        /// 根据用户名称和密码查询
         /// </summary>
+        /// <param name="name"></param>
+        /// <param name="pswd"></param>
         /// <returns></returns>
-        List<Tags> SelectTagList();
-
+        Admins GetAdminByNameAndPswd(string name, string pswd);
 
         /// <summary>
-        /// 生成tree
+        /// Tag树列表
         /// </summary>
         /// <returns></returns>
-        List<TreeData> TreeList(List<Tags> tags);
-
+        List<TreeData> TreeList();
 
     }
 }

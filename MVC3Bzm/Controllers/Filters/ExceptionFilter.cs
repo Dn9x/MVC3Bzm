@@ -8,6 +8,7 @@ using System.Collections.Specialized;
 using MVC3Bzm.Models.InterFaces;
 using MVC3Bzm.Models;
 using MVC3Bzm.Models.Entity;
+using MVC3Bzm.Models.Services;
 
 namespace MVC3Bzm.Controllers.Filters
 {
@@ -21,14 +22,24 @@ namespace MVC3Bzm.Controllers.Filters
         {
             //获取异常类
             Exception ex = filterContext.Exception;
+            
+            IBzm iBzm = new BzmService();
 
-            var error = new Errors(){
-                Error = filterContext.HttpContext.Request.Url.AbsoluteUri + ":" + ex.Message
-            };
+            using (Bzm bzm = iBzm.BuildBzm())
+            {
+                //赋值
+                var error = new BZMError()
+                {
+                    Error = filterContext.HttpContext.Request.Url.AbsoluteUri + ":" + ex.Message,
+                    Date = DateTime.Now,
+                };
 
-            IErrors eSer = ServiceBuilder.BuildErrorService();
+                //添加
+                bzm.BZMError.InsertOnSubmit(error);
 
-            eSer.InsertErrors(error);
+                //提交
+                bzm.SubmitChanges();
+            }
 
             //获取controll名称
             string contro = filterContext.HttpContext.Request.Url.AbsoluteUri;

@@ -5,20 +5,23 @@
 }
 
 @{
-    List<Articles> list = ViewData["Articles"] as List<Articles>;
-     
-    foreach (Articles art in list)
+    List<BZMArticle> list = ViewBag.List as List<BZMArticle>;
+
+    foreach (BZMArticle art in list)
     {
         <div class='post_list'>
-            <div class='post_title'>@Html.ActionLink(art.Title, "Detail", new { id = art.ID }, new { target = "_blank" })</div>
-            <div class='post_content'>@Html.Raw(@art.Content)</div>
+            <div class='post_title'>@Html.ActionLink(art.ArticleTitle, "Detail", new { id = art.ID }, new { target = "_blank" })</div>
+            <div class='post_content'>@Html.Raw(@art.ArticleContent)</div>
             <div class='post_info'>
-                @art.Date&nbsp;&nbsp;@art.TagName&nbsp;&nbsp;@art.Access&nbsp&nbsp;@Html.ActionLink(art.AdminName, "About", "", new { target = "_blank" })&nbsp;&nbsp;@Html.ActionLink("Tags", "Tags", "", new { target = "_blank" })&nbsp;&nbsp;推荐使用：
-		        <span aria-hidden="true" title="Chrome" class="icon-chrome"></span>
+                @art.ArticleDate&nbsp;&nbsp;@art.BZMTag.TagName&nbsp;&nbsp;@art.ArticleAccess&nbsp&nbsp;
+                @Html.ActionLink(art.BZMAdMIn.AdminName, "About", "", new { target = "_blank" })&nbsp;&nbsp;
+                @Html.ActionLink("Tags", "Tags", "", new { target = "_blank" })
+                &nbsp;&nbsp;推荐使用：<span aria-hidden="true" title="Chrome" class="icon-chrome"></span>
 		        <span aria-hidden="true" title="Firefox" class="icon-firefox"></span>
 		        <span aria-hidden="true" title="Opera" class="icon-opera"></span>
 		        <span aria-hidden="true" title="Safari" class="icon-safari"></span>
 		        <span aria-hidden="true" title="IE9+" class="icon-IE"></span>
+                &nbsp;&nbsp;订阅：<a href="Home/Feed" style="text-decoration:none;" target="_blank"><span aria-hidden="true" title="订阅" style="color:#009933; cursor:pointer;" class="icon-feed"></span></a>
 		        @*<span aria-hidden="true" class="icon-feed"></span>
 		        <span aria-hidden="true" class="icon-home"></span>*@
             </div>
@@ -40,6 +43,9 @@
     <div class='post_info'><%= list[0][i].Date %>&nbsp;&nbsp;<%= list[0][i].TagName %>
     &nbsp&nbsp<%= list[0][i].Access %>
     &nbsp&nbsp<a href='Home/About' target='_blank' class='auth_a'><%= list[0][i].AdminName %></a>
-    &nbsp&nbsp<a href='Home/Tags' target='_blank' class='auth_a'>Tags</a></div></div>
+    &nbsp&nbsp<a href='Home/Tags' target='_blank' class='auth_a'>Tags</a>
+    &nbsp;&nbsp;订阅：<a href="Home/Feed" style="text-decoration:none;" target="_blank">
+    <span aria-hidden="true" title="订阅" style="color:#009933; cursor:pointer;" class="icon-feed"></span></a>
+    </div></div>
 <% } %>
 </script>

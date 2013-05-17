@@ -12,6 +12,7 @@ using MVC3Bzm.Models.InterFaces;
 using MVC3Bzm.Models.Entity;
 using MVC3Bzm.Controllers.Filters;
 using Tree.MvcTree.Models;
+using MVC3Bzm.Models.Services;
 
 namespace MVC3Bzm.Controllers
 {
@@ -25,10 +26,24 @@ namespace MVC3Bzm.Controllers
         [ExceptionFilter()]
         public ActionResult Index()
         {
-            //创建对象
-            IArticle iArt = ServiceBuilder.BuildArticleService();
+            IBzm iBzm = new BzmService();
 
-            ViewData["Articles"] = iArt.SelectArticles("0", "10");
+            using (Bzm bzm = iBzm.BuildBzm())
+            {
+                //使用延迟加载
+                bzm.DeferredLoadingEnabled = true;
+
+                var artiles = (from a in bzm.BZMArticle orderby a.ArticleDate descending select a).Skip(0).Take(10);
+
+                List<BZMArticle> list = new List<BZMArticle>();
+
+                foreach (BZMArticle a in artiles)
+                {
+                    list.Add(a);
+                }
+
+                ViewBag.List = list;
+            }
 
             return View();
         }
@@ -40,16 +55,26 @@ namespace MVC3Bzm.Controllers
         /// <returns></returns>
         [LoggerFilter()]
         [ExceptionFilter()]
-        public ActionResult Detail(string id)
+        public ActionResult Detail(int id)
         {
-            //创建对象
-            IArticle iArt = ServiceBuilder.BuildArticleService();
+            IBzm iBzm = new BzmService();
 
-            ViewData["Article"] = iArt.SelectArticleById(HttpUtility.HtmlEncode(id));
+            using (Bzm bzm = iBzm.BuildBzm())
+            {
+                //使用延迟加载
+                bzm.DeferredLoadingEnabled = true;
 
-            IComment iComm = ServiceBuilder.BuildCommentService();
+                var artiles = from a in bzm.BZMArticle where a.ID == id select a;
 
-            ViewData["Comments"] = iComm.SelectCommentsByArticleId(HttpUtility.HtmlEncode(id));
+                List<BZMArticle> list = new List<BZMArticle>();
+
+                foreach (BZMArticle a in artiles)
+                {
+                    list.Add(a);
+                }
+
+                ViewBag.List = list;
+            }
 
             return View();
         }
@@ -63,10 +88,38 @@ namespace MVC3Bzm.Controllers
         [ExceptionFilter()]
         public ActionResult NextPage(string id)
         {
-            //创建对象
-            IArticle iArt = ServiceBuilder.BuildArticleService();
+            IBzm iBzm = new BzmService();
 
-            string json = JsonUtil.ListToJson(iArt.SelectArticles(HttpUtility.HtmlEncode(id), "10"));
+            string json = "";       //返回值
+
+            using (Bzm bzm = iBzm.BuildBzm())
+            {
+                //使用延迟加载
+                bzm.DeferredLoadingEnabled = true;
+
+                var artiles = (from a in bzm.BZMArticle orderby a.ArticleDate descending select a).Skip(Convert.ToInt32(HttpUtility.HtmlEncode(id))).Take(10);
+
+                List<Articles> list = new List<Articles>();
+
+                foreach (BZMArticle a in artiles)
+                {
+                    Articles art = new Articles();
+
+                    art.ID = a.ID;
+                    art.Title = a.ArticleTitle;
+                    art.Content = a.ArticleContent;
+                    art.Date = a.ArticleDate+"";
+                    art.Access = a.ArticleAccess;
+                    art.AdminId = a.ArticleAdminID;
+                    art.AdminName = a.BZMAdMIn.AdminName;
+                    art.TagId = a.ArticleTagID;
+                    art.TagName = a.BZMTag.TagName;
+
+                    list.Add(art);
+                }
+
+                json = JsonUtil.ListToJson(list);
+            }
 
             return Content(json);
         }
@@ -83,22 +136,41 @@ namespace MVC3Bzm.Controllers
 
             if (name.Length > 0 && content.Length > 0)
             {
-                Comments comment = new Comments
+                IBzm iBzm = new BzmService();
+
+                using (Bzm bzm = iBzm.BuildBzm())
                 {
-                    ArticleId = Convert.ToInt32(HttpUtility.HtmlEncode(title)),
-                    User = HttpUtility.HtmlEncode(name),
-                    Content = HttpUtility.HtmlEncode(content),
-                };
+                    //赋值
+                    BZMComment comment = new BZMComment
+                    {
+                        CommArticleID = Convert.ToInt32(HttpUtility.HtmlEncode(title)),
+                        CommUser = HttpUtility.HtmlEncode(name),
+                        CommContent = HttpUtility.HtmlEncode(content),
+                        CommDate = DateTime.Now,
+                    };
 
-                IComment iComm = ServiceBuilder.BuildCommentService();
+                    bzm.BZMComment.InsertOnSubmit(comment);
 
-                //得到结果
-                result = iComm.InsertComment(comment);
+                    bzm.SubmitChanges();
 
-                //得到评论列表
-                List<Comments> list = iComm.SelectCommentsByArticleId(title);
+                    var comm = from c in bzm.BZMComment orderby c.CommDate descending select c;
 
-                result = JsonUtil.ListToJson1(list);
+                    List<Comments> list = new List<Comments>();
+
+                    foreach (BZMComment c in comm)
+                    {
+                        Comments com = new Comments();
+
+                        com.ID = c.ID;
+                        com.User = c.CommUser;
+                        com.Content = c.CommContent;
+                        com.Date = c.CommDate+"";
+
+                        list.Add(com);
+                    }
+
+                    result = JsonUtil.ListToJson1(list);
+                }
             }
 
             return Content(result);
@@ -121,18 +193,61 @@ namespace MVC3Bzm.Controllers
         /// <returns></returns>
         [LoggerFilter()]
         [ExceptionFilter()]
-        public ActionResult Tags() {
-            ITag it = ServiceBuilder.BuildTagService();
+        public ActionResult Tags() 
+        {
+            IBzm iBzm = new BzmService();
 
             //得到评论列表
-            List<TreeData> result = it.TreeList(it.SelectTagList());
+            List<TreeData> result = iBzm.TreeList();
 
-            ViewBag.TreeData = result;
+            ViewBag.List = result;
 
             return View();
         }
 
 
+        /// <summary>
+        /// Feed新闻Rss
+        /// </summary>
+        /// <returns></returns>
+        public ContentResult Feed()
+        {
+            IBzm iBzm = new BzmService();
+
+            string reslt = "";
+
+            using (Bzm bzm = iBzm.BuildBzm())
+            {
+                //使用延迟加载
+                bzm.DeferredLoadingEnabled = true;
+
+                var artiles = (from a in bzm.BZMArticle orderby a.ArticleDate descending select a).Skip(0).Take(10);
+
+                List<Articles> list = new List<Articles>();
+
+                foreach (BZMArticle a in artiles)
+                {
+                    Articles art = new Articles();
+
+                    art.ID = a.ID;
+                    art.Title = a.ArticleTitle;
+                    art.Content = a.ArticleContent;
+                    art.Date = a.ArticleDate + "";
+                    art.Access = a.ArticleAccess;
+                    art.AdminId = a.ArticleAdminID;
+                    art.AdminName = a.BZMAdMIn.AdminName;
+                    art.TagId = a.ArticleTagID;
+                    art.TagName = a.BZMTag.TagName;
+                    art.CommCount = a.BZMComment.Count();
+
+                    list.Add(art);
+                }
+
+                reslt = new PubUtil().Rss(list);
+            }
+
+            return Content(reslt, "text/xml");
+        }
 
     }
 }

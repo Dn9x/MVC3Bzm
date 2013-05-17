@@ -17,17 +17,17 @@
           <td align="center" bgcolor="#33FFFF">時間</td>
         </tr>
         @{
-            List<Access> list = ViewBag.Notes as List<Access>;
+            List<BZMAccess> list = ViewBag.List as List<BZMAccess>;
 
-            foreach (Access accs in list)
+            foreach (BZMAccess accs in list)
             {
                 <tr>
                   <td align='center' bgcolor='#EEEEEE'>@accs.ID</td>
-                  <td align='center' bgcolor='#EEEEEE'>@accs.Url</td>
-                  <td align='center' bgcolor='#EEEEEE'>@accs.Ip</td>
-                  <td align='center' bgcolor='#EEEEEE'>@accs.Dns</td>
-                  <td align='center' bgcolor='#EEEEEE'>@accs.Browser</td>
-                  <td align='center' bgcolor='#EEEEEE'>@accs.Date</td>
+                  <td align='center' bgcolor='#EEEEEE'>@accs.AcCURL</td>
+                  <td align='center' bgcolor='#EEEEEE'>@accs.AcCIP</td>
+                  <td align='center' bgcolor='#EEEEEE'>@accs.AcCDNS</td>
+                  <td align='center' bgcolor='#EEEEEE'>@accs.AcCBrowser</td>
+                  <td align='center' bgcolor='#EEEEEE'>@accs.AcCDate</td>
                 </tr>
             }
         }

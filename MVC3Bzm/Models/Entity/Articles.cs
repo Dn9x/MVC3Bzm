@@ -54,6 +54,11 @@ namespace MVC3Bzm.Models.Entity
         public string AdminName { get; set; }
 
         /// <summary>
+        /// 评论数目
+        /// </summary>
+        public int CommCount { get; set; }
+
+        /// <summary>
         /// 备注
         /// </summary>
         public string Remark { get; set; }
