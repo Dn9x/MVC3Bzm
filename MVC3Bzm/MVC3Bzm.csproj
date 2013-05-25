@@ -373,6 +373,7 @@
     <Content Include="Content\images\search_32.png" />
     <Content Include="Content\images\up_32.png" />
     <Content Include="Content\images\up_48.png" />
+    <Content Include="Content\styles\desert.css" />
     <Content Include="Content\styles\font.css" />
     <Content Include="Content\styles\index.css" />
     <Content Include="Content\styles\login.css" />

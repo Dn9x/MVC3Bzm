@@ -17,7 +17,7 @@ namespace MVC3Bzm.Models.Util
 
             //开始拼接
             reslt += "<channel>";
-            reslt += "<title>"+ConfigurationManager.AppSettings["WebName "]+"</title>";
+            reslt += "<title>"+ConfigurationManager.AppSettings["WebName"]+"</title>";
             reslt += "<atom:link href='"+ConfigurationManager.AppSettings["WebSite"]+"' rel='self' type='application/rss+xml'/>";
             reslt += "<link>"+ConfigurationManager.AppSettings["WebSite"]+"</link>";
             reslt += "<description>做梦也很累--私人学习记录</description>";

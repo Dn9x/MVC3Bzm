@@ -7,6 +7,9 @@
     //改变图标颜色
     ChangeBrowser();
 
+    //字体高亮
+    prettyPrint();
+
     //下一頁
     $("#next_p").click(function () {
         var page = $("#Hid_Page").val();
@@ -162,3 +165,13 @@ $(document).keypress(function (e) {
         }
     }
 });
+
+//运行代码
+function RunCode(op) {
+    var win = window.open('', "_blank", '');
+    win.document.open('text/html', 'replace');
+    win.opener = null
+    alert($(op).val());
+    win.document.write($(op).val());
+    win.document.close();
+} 
